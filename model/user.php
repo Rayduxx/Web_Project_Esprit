@@ -6,7 +6,7 @@
     private string $Email;
     private string $Password;
     private int $isAdmin;
-    private int $TypeCompte
+    private int $TypeCompte;
     public function __construct($ID, $ln, $fn, $mail, $pwd,$admin, $typeCmpt){
       $this->id = $ID;
       $this->LastName = $ln;
