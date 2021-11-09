@@ -6,13 +6,15 @@
     private string $Email;
     private string $Password;
     private int $isAdmin;
-    public function __construct($ID, $ln, $fn, $mail, $pwd,$admin){
+    private int $TypeCompte
+    public function __construct($ID, $ln, $fn, $mail, $pwd,$admin, $typeCmpt){
       $this->id = $ID;
       $this->LastName = $ln;
       $this->FirstName = $fn;
       $this->Email = $mail;
       $this->Password = $pwd;
       $this->isAdmin = $admin;
+      $this->TypeCompte = $typeCmpt;
     }
     public function getId(){
       return $this->id;
@@ -32,6 +34,7 @@
     public function getAdminStatus(){
       return $this->isAdmin;
     }
+    public function
   }
 
  ?>
