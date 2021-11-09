@@ -117,11 +117,13 @@ CREATE TABLE `nomsite` (
 --
 -- Table structure for table `offres`
 --
-
 CREATE TABLE `offres` (
   `id_o` int(50) NOT NULL,
-  `description_o` longtext NOT NULL
+  `description_o` varchar(100) NOT NULL,
+  `date_o` varchar(100) NOT NULL,
+  `lieu_o` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
 
 -- --------------------------------------------------------
 
@@ -131,8 +133,11 @@ CREATE TABLE `offres` (
 
 CREATE TABLE `promotions` (
   `id_p` int(50) NOT NULL,
-  `description_p` longtext NOT NULL
+  `description_p` varchar(100) NOT NULL,
+  `date_p` varchar(100) NOT NULL,
+  `lieu_p` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
 
 -- --------------------------------------------------------
 
@@ -195,6 +200,7 @@ ALTER TABLE `nomsite`
 ALTER TABLE `offres`
   ADD PRIMARY KEY (`id_o`);
 
+
 --
 -- Indexes for table `promotions`
 --
@@ -252,12 +258,14 @@ ALTER TABLE `nomsite`
 --
 ALTER TABLE `offres`
   MODIFY `id_o` int(50) NOT NULL AUTO_INCREMENT;
+COMMIT;
 
 --
 -- AUTO_INCREMENT for table `promotions`
 --
 ALTER TABLE `promotions`
   MODIFY `id_p` int(50) NOT NULL AUTO_INCREMENT;
+COMMIT;
 
 --
 -- AUTO_INCREMENT for table `users`
