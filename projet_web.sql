@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 08, 2021 at 10:19 AM
+-- Generation Time: Nov 09, 2021 at 09:13 PM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.10
 
@@ -20,6 +20,21 @@ SET time_zone = "+00:00";
 --
 -- Database: `projet_web`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `entretient`
+--
+
+CREATE TABLE `entretient` (
+  `id` int(11) NOT NULL,
+  `TimeDateEntretient` timestamp NOT NULL DEFAULT current_timestamp(),
+  `Remarque` varchar(255) NOT NULL,
+  `prix` int(11) NOT NULL,
+  `idAgentEntretient` int(11) NOT NULL,
+  `idAppartement` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -57,12 +72,66 @@ CREATE TABLE `eventlog` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `location`
+--
+
+CREATE TABLE `location` (
+  `id` int(11) NOT NULL,
+  `idLogement` int(11) NOT NULL,
+  `idLocataire` int(11) NOT NULL,
+  `prix` int(11) NOT NULL,
+  `remarques` varchar(255) NOT NULL,
+  `DebutLocation` timestamp NOT NULL DEFAULT current_timestamp(),
+  `etat` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `logement`
+--
+
+CREATE TABLE `logement` (
+  `id` int(11) NOT NULL,
+  `bloc` varchar(1) NOT NULL,
+  `numero` int(11) NOT NULL,
+  `type` varchar(10) NOT NULL,
+  `nbChambre` int(11) NOT NULL,
+  `prixLoyer` int(11) NOT NULL,
+  `idLocataire` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `nomsite`
 --
 
 CREATE TABLE `nomsite` (
   `id` int(11) NOT NULL,
   `nomsite` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `offres`
+--
+
+CREATE TABLE `offres` (
+  `id_o` int(50) NOT NULL,
+  `description_o` longtext NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `promotions`
+--
+
+CREATE TABLE `promotions` (
+  `id_p` int(50) NOT NULL,
+  `description_p` longtext NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -85,6 +154,12 @@ CREATE TABLE `users` (
 --
 
 --
+-- Indexes for table `entretient`
+--
+ALTER TABLE `entretient`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `event`
 --
 ALTER TABLE `event`
@@ -97,10 +172,34 @@ ALTER TABLE `eventlog`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `location`
+--
+ALTER TABLE `location`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `logement`
+--
+ALTER TABLE `logement`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `nomsite`
 --
 ALTER TABLE `nomsite`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `offres`
+--
+ALTER TABLE `offres`
+  ADD PRIMARY KEY (`id_o`);
+
+--
+-- Indexes for table `promotions`
+--
+ALTER TABLE `promotions`
+  ADD PRIMARY KEY (`id_p`);
 
 --
 -- Indexes for table `users`
@@ -111,6 +210,12 @@ ALTER TABLE `users`
 --
 -- AUTO_INCREMENT for dumped tables
 --
+
+--
+-- AUTO_INCREMENT for table `entretient`
+--
+ALTER TABLE `entretient`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `event`
@@ -125,10 +230,34 @@ ALTER TABLE `eventlog`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `location`
+--
+ALTER TABLE `location`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `logement`
+--
+ALTER TABLE `logement`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `nomsite`
 --
 ALTER TABLE `nomsite`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `offres`
+--
+ALTER TABLE `offres`
+  MODIFY `id_o` int(50) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `promotions`
+--
+ALTER TABLE `promotions`
+  MODIFY `id_p` int(50) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `users`
