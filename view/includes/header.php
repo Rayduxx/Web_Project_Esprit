@@ -10,14 +10,33 @@
   </head>
   <body>
     <header class="sticky-top">
-      <nav class="navbar navbar-expand-md nav nav-tabs navbar-light">
+      <nav class="navbar navbar-expand-md nav nav-tabs navbar-light navigation">
         <div class="container-fluid">
-          <a class="navbar-brand" href="/index.php"><img src="../../assets/img/logo.png"></a>
+          <a class="navbar-brand" href="/index.php"><img src=""></a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
+  					     <span class="navbar-toggler-icon"></span>
+  			   </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+							<li><a class="nav-link" href="#">Accueil</a></li>
+						</li>
+            <li class="nav-item">
+							<li><a class="nav-link" href="#">Nos Logement</a></li>
+						</li>
+            <li class="nav-item">
+							<li><a class="nav-link" href="#">Nos Evenement</a></li>
+						</li>
+            <li class="nav-item">
+							<li><a class="nav-link" href="#">Notre Blog</a></li>
+						</li>
+            <li class="nav-item">
+							<li><a class="nav-link" href="#">Nos Offres et Promotions</a></li>
+						</li>
+          </ul>
+          </div>
         </div>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
-  					<span class="navbar-toggler-icon"></span>
-  			</button>
       </nav>
-
-
     </header>
+    <div class="Corps">
+    </div>
