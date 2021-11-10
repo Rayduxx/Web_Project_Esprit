@@ -42,7 +42,7 @@ class Location {
   private int $idLocataire;
   private string $remarques;
   private int $idLogement;
-  private string $DebutLocation;
+  private int $DebutLocation;
   private int $etat;
   public function __construct($ID, $prx, $idloca, $rem, $idLo,$DebLoca,$state){
     $this->id = $ID;
