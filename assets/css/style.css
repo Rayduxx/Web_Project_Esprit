@@ -4,7 +4,7 @@ html, body {
 	height: 100%;
 	width: 100%;
 	font-family: 'Poppins', sans-serif;
-	background-color: #FFFFFF;
+	background-color: #2eb82e;
 	color: #222;
 }
 
@@ -23,7 +23,16 @@ footer {
 	background-color: #00b33c;
 	padding: 15%;
 }
-
+.Corps {
+	padding-top: 10%;
+	padding-left: 20%;
+	padding-right: 20%;
+	padding-bottom: 10%;
+}
+.erreur{
+	padding: 50%;
+	margin: 50%;
+}
 /*---Media Queries --*/
 @media (max-width: 992px) {
 
