@@ -2,10 +2,10 @@
 -- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Nov 09, 2021 at 09:13 PM
--- Server version: 10.4.21-MariaDB
--- PHP Version: 8.0.10
+-- Hôte : localhost
+-- Généré le : jeu. 11 nov. 2021 à 18:04
+-- Version du serveur : 10.4.21-MariaDB
+-- Version de PHP : 7.4.25
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,13 +18,52 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `projet_web`
+-- Base de données : `projet_web`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `entretient`
+-- Structure de la table `avis`
+--
+
+CREATE TABLE `avis` (
+  `id` int(11) NOT NULL,
+  `id_user` int(11) NOT NULL,
+  `rate` int(11) NOT NULL,
+  `date_avis` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `commentaire`
+--
+
+CREATE TABLE `commentaire` (
+  `id` int(11) NOT NULL,
+  `commentaire` varchar(255) NOT NULL,
+  `date` timestamp NOT NULL DEFAULT current_timestamp(),
+  `id_avis` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `coupon`
+--
+
+CREATE TABLE `coupon` (
+  `id` int(11) NOT NULL,
+  `code` varchar(10) NOT NULL,
+  `id_offre` int(11) NOT NULL,
+  `status` int(11) NOT NULL DEFAULT 0
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `entretient`
 --
 
 CREATE TABLE `entretient` (
@@ -39,7 +78,7 @@ CREATE TABLE `entretient` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `event`
+-- Structure de la table `event`
 --
 
 CREATE TABLE `event` (
@@ -59,20 +98,7 @@ CREATE TABLE `event` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `eventlog`
---
-
-CREATE TABLE `eventlog` (
-  `id` int(11) NOT NULL,
-  `eventId` int(11) NOT NULL,
-  `userId` int(11) NOT NULL,
-  `dateInscription` timestamp NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `location`
+-- Structure de la table `location`
 --
 
 CREATE TABLE `location` (
@@ -88,7 +114,7 @@ CREATE TABLE `location` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `logement`
+-- Structure de la table `logement`
 --
 
 CREATE TABLE `logement` (
@@ -104,7 +130,7 @@ CREATE TABLE `logement` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `nomsite`
+-- Structure de la table `nomsite`
 --
 
 CREATE TABLE `nomsite` (
@@ -115,8 +141,9 @@ CREATE TABLE `nomsite` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `offres`
+-- Structure de la table `offres`
 --
+
 CREATE TABLE `offres` (
   `id_o` int(50) NOT NULL,
   `description_o` varchar(100) NOT NULL,
@@ -124,151 +151,99 @@ CREATE TABLE `offres` (
   `lieu_o` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
-
 -- --------------------------------------------------------
 
 --
--- Table structure for table `promotions`
+-- Structure de la table `participants`
 --
 
-CREATE TABLE `promotions` (
-  `id_p` int(50) NOT NULL,
-  `description_p` varchar(100) NOT NULL,
-  `date_p` varchar(100) NOT NULL,
-  `lieu_p` varchar(100) NOT NULL
+CREATE TABLE `participants` (
+  `id` int(11) NOT NULL,
+  `eventId` int(11) NOT NULL,
+  `userId` int(11) NOT NULL,
+  `dateInscription` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
-
 -- --------------------------------------------------------
 
 --
--- Table structure for table `users`
+-- Structure de la table `users`
 --
 
 CREATE TABLE `users` (
   `id` int(11) NOT NULL,
-  `nom` varchar(10) NOT NULL,
-  `prenom` varchar(10) NOT NULL,
-  `email` varchar(50) NOT NULL,
+  `nom` varchar(255) NOT NULL,
+  `prenom` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
-  `isAdmin` int(11) NOT NULL DEFAULT 0
+  `isAdmin` int(11) NOT NULL DEFAULT 0,
+  `typeCompte` int(11) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Indexes for dumped tables
+-- Index pour les tables déchargées
 --
 
 --
--- Indexes for table `entretient`
+-- Index pour la table `avis`
 --
-ALTER TABLE `entretient`
+ALTER TABLE `avis`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `event`
+-- Index pour la table `commentaire`
 --
-ALTER TABLE `event`
+ALTER TABLE `commentaire`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `eventlog`
+-- Index pour la table `coupon`
 --
-ALTER TABLE `eventlog`
+ALTER TABLE `coupon`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `location`
---
-ALTER TABLE `location`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `logement`
---
-ALTER TABLE `logement`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `nomsite`
---
-ALTER TABLE `nomsite`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `offres`
+-- Index pour la table `offres`
 --
 ALTER TABLE `offres`
   ADD PRIMARY KEY (`id_o`);
 
-
 --
--- Indexes for table `promotions`
---
-ALTER TABLE `promotions`
-  ADD PRIMARY KEY (`id_p`);
-
---
--- Indexes for table `users`
+-- Index pour la table `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT pour les tables déchargées
 --
 
 --
--- AUTO_INCREMENT for table `entretient`
+-- AUTO_INCREMENT pour la table `avis`
 --
-ALTER TABLE `entretient`
+ALTER TABLE `avis`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `event`
+-- AUTO_INCREMENT pour la table `commentaire`
 --
-ALTER TABLE `event`
+ALTER TABLE `commentaire`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `eventlog`
+-- AUTO_INCREMENT pour la table `coupon`
 --
-ALTER TABLE `eventlog`
+ALTER TABLE `coupon`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `location`
---
-ALTER TABLE `location`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `logement`
---
-ALTER TABLE `logement`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `nomsite`
---
-ALTER TABLE `nomsite`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `offres`
+-- AUTO_INCREMENT pour la table `offres`
 --
 ALTER TABLE `offres`
   MODIFY `id_o` int(50) NOT NULL AUTO_INCREMENT;
-COMMIT;
 
 --
--- AUTO_INCREMENT for table `promotions`
---
-ALTER TABLE `promotions`
-  MODIFY `id_p` int(50) NOT NULL AUTO_INCREMENT;
-COMMIT;
-
---
--- AUTO_INCREMENT for table `users`
+-- AUTO_INCREMENT pour la table `users`
 --
 ALTER TABLE `users`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
