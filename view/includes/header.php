@@ -19,21 +19,26 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-							<li><a class="nav-link" href="#">Accueil</a></li>
+							<li><a class="nav-link text-light" href="#">Nos Logement</a></li>
 						</li>
             <li class="nav-item">
-							<li><a class="nav-link" href="#">Nos Logement</a></li>
+							<li><a class="nav-link text-light" href="#">Nos Evenement</a></li>
 						</li>
             <li class="nav-item">
-							<li><a class="nav-link" href="#">Nos Evenement</a></li>
+							<li><a class="nav-link text-light" href="#">Notre Blog</a></li>
 						</li>
             <li class="nav-item">
-							<li><a class="nav-link" href="#">Notre Blog</a></li>
-						</li>
-            <li class="nav-item">
-							<li><a class="nav-link" href="#">Nos Offres et Promotions</a></li>
+							<li><a class="nav-link text-light" href="#">Nos Offres et Promotions</a></li>
 						</li>
           </ul>
+		  <ul class="navbar-nav ml-auto">
+			<li class="nav-item">
+				<li><a class="nav-link text-light" href="#"> Incription</a></li>
+			</li>
+			<li class="nav-item">
+				<li><a class="nav-link text-light" href="#"> Connection</a></li>
+			</li>
+		  </ul>
           </div>
         </div>
       </nav>

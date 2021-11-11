@@ -4,12 +4,12 @@ html, body {
 	height: 100%;
 	width: 100%;
 	font-family: 'Poppins', sans-serif;
-	background-color: #2eb82e;
+	background-color: #FFF;
 	color: #222;
 }
 
 .navigation {
-	background-color: #00b33c;
+	background-color: black;
 }
 .nav-link {
 	font-size: 1em !important;
@@ -20,8 +20,8 @@ html, body {
 	padding: .8rem;
 }
 footer {
-	background-color: #00b33c;
-	padding: 15%;
+	background-color: #000;
+	padding-left: 40%;
 }
 .Corps {
 	padding-top: 10%;
