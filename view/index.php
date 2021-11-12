@@ -49,7 +49,7 @@ include "./includes/header.php";
     </div>
   </div>
   <hr class="my-4">
-  <!-----Section--->
+  <!---Section--->
   <div class="container-fluid padding">
     <div class="row text-center padding">
       <div class="col-xs-12 col-sm-6 col-md-4">
@@ -76,7 +76,7 @@ include "./includes/header.php";
     </div>
     <hr class="my-4">
   </div>
-  <!-----Testimonies--->
+  <!---Testimonies--->
   <div class="container-fluid padding">
     <div class="row welcome text-center">
       <div class="col-12">
@@ -90,14 +90,14 @@ include "./includes/header.php";
       <?php
       $i = nombreAvis();
       if($i == 0){ ?>
-        <div class="col-md-2">
+        <div class="col-md-12">
             <div class="card p-3 text-center px-4">
                 <div class="user-content">
                     <h5 class="mb-0">Aucun n'avis existe sur le site</h5>
                 </div>
             </div>
         </div>
-      <?php } ?>
+      <?php } else if($i < 3 && $i > 0){ ?>
         <div class="col-md-4">
               <div class="card p-3 text-center px-4">
                   <div class="user-image"> <img src="" class="rounded-circle" width="80"> </div>
@@ -112,7 +112,25 @@ include "./includes/header.php";
                   <div class="ratings"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> </div>
               </div>
           </div>
+        <?php } else {
+          $j = 0;
+          while($j < 3){
+            $j++;?>
+            <div class="col-md-4">
+                  <div class="card p-3 text-center px-4">
+                      <div class="user-image"> <img src="" class="rounded-circle" width="80"> </div>
+                      <div class="user-content">
+                          <h5 class="mb-0"><?php
 
+
+
+                          ?></h5>
+                          <p>Lorem ipsum</p>
+                      </div>
+                      <div class="ratings"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> </div>
+                  </div>
+              </div>
+        <?php }}?>
       </div>
     </div>
 </div>

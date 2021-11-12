@@ -1,6 +1,8 @@
 <?php
 require("../config.php");
 require("../controller/avisC.php");
+require("../controller/LogementC.php");
+
 ?>
 <html lang="fr">
   <head>
@@ -26,9 +28,6 @@ require("../controller/avisC.php");
 						</li>
             <li class="nav-item">
 							<li><a class="nav-link text-light" href="./events.php">Nos Evenement</a></li>
-						</li>
-            <li class="nav-item">
-							<li><a class="nav-link text-light" href="./offres.php">Nos Offres et Promotions</a></li>
 						</li>
             <?php if (!isset($_SESSION['name'])) { ?>
             <li class="nav-item">

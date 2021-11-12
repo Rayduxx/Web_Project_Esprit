@@ -1,0 +1,100 @@
+body ,html{
+    margin: 0px;
+    padding: 0px;
+    background: url(backk.jpg);
+    background-size: 100%;
+    background-repeat: no-repeat;
+    position:relative;
+}
+.menu li  {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: inline;
+    float: left;
+    line-height: 40px;
+    margin:0 10px 0 10px;
+    float: left;
+  }
+
+  .menu ul li { 
+    padding-right: 42px;
+     
+    
+    }
+   
+
+    
+    .menu a {
+        font-size: 14px,solid;
+        text-decoration: none;
+        color:white ;
+        display: block;
+        padding: 20px;
+        box-shadow : 10px 10px 5px white;
+        font-family:'Courgette', cursive; 
+        padding: 10px 10px 10px 10px;
+        text-align: left;
+        border-radius: 25px;
+        margin-left: 20px;
+        margin-top: 20px;
+    
+    }
+     
+ 
+    .corps a{
+        text-decoration:none ;
+        color: white;
+        float: left;
+        text-align: center;
+        margin: 20px;
+
+    }
+    .corps .vis a{
+        font-family:'Courgette', cursive; 
+        color: white ;
+        width: 284px;
+        padding: 100px 100px 200px 100px;
+        border: 1px blue;
+      
+        box-shadow: 10px 10px 5px white;
+        border-radius: 20px;
+    }
+    .corps .avis a{
+        color: white;
+        font-family:'Courgette', cursive; 
+        width: 284px;
+        padding: 100px 100px 200px 100px;
+        border: 1px  ;
+       
+        box-shadow: 10px 10px 5px white;
+        border-radius: 25px;
+    }
+    .corps .offres a{
+        font-family:'Courgette', cursive; 
+        width: 284px;
+        padding: 100px 100px 200px 100px;
+        border: 1px blue;
+        color: white;
+        box-shadow: 10px 10px 5px white;
+        border-radius: 25px;
+    }
+    .corps .loge a{
+        font-family:'Courgette', cursive; 
+        width: 283px;
+        padding: 100px 100px 200px 100px;
+        border: 1px blue;
+        color: white;
+        box-shadow: 10px 10px 5px white;
+        border-radius: 25px;
+    }
+    .corps{
+        padding: 10px 10px 20px 10px;
+        margin: 100px;
+    }
+    .footer h4{
+        color: white;
+        padding-top: 560px;
+       margin-right: 150px;
+
+    }

@@ -49,7 +49,7 @@ $page_titre = "Login";
 						</div>
             <br/>
 						<div class="col-md-6 container">
-							<input type="password" class="form-control rounded" id="mdp" name="mdp" placeholder="Mot de passe" required />
+							<input type="password" class="form-control rounded" id="password" name="password" placeholder="Mot de passe" required />
 						<br/>
 						</div>
 						<div class="container-fluid">

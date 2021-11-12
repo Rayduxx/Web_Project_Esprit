@@ -37,7 +37,7 @@ if(!isset($_SESSION['id']) AND isset($_COOKIE['email'],$_COOKIE['password']) AND
         $userinfo = $requser->fetch();
         $_SESSION['id'] = $userinfo['id'];
         $_SESSION['email'] = $userinfo['email'];
-        $_SESSION['email'] = $userinfo['email'];
+        $_SESSION['password'] = $userinfo['password'];
     }
 }
 if(isset($_COOKIE['accept_cookie'])) {
