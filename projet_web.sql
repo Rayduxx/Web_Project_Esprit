@@ -2,10 +2,10 @@
 -- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
--- Hôte : localhost
--- Généré le : jeu. 11 nov. 2021 à 18:04
--- Version du serveur : 10.4.21-MariaDB
--- Version de PHP : 7.4.25
+-- Host: 127.0.0.1
+-- Generation Time: Nov 12, 2021 at 08:34 PM
+-- Server version: 10.4.21-MariaDB
+-- PHP Version: 8.0.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,13 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de données : `projet_web`
+-- Database: `projet_web`
 --
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `avis`
+-- Table structure for table `avis`
 --
 
 CREATE TABLE `avis` (
@@ -37,7 +37,7 @@ CREATE TABLE `avis` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `commentaire`
+-- Table structure for table `commentaire`
 --
 
 CREATE TABLE `commentaire` (
@@ -50,7 +50,7 @@ CREATE TABLE `commentaire` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `coupon`
+-- Table structure for table `coupon`
 --
 
 CREATE TABLE `coupon` (
@@ -63,7 +63,7 @@ CREATE TABLE `coupon` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `entretient`
+-- Table structure for table `entretient`
 --
 
 CREATE TABLE `entretient` (
@@ -78,7 +78,7 @@ CREATE TABLE `entretient` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `event`
+-- Table structure for table `event`
 --
 
 CREATE TABLE `event` (
@@ -98,7 +98,7 @@ CREATE TABLE `event` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `location`
+-- Table structure for table `location`
 --
 
 CREATE TABLE `location` (
@@ -114,23 +114,32 @@ CREATE TABLE `location` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `logement`
+-- Table structure for table `logement`
 --
 
 CREATE TABLE `logement` (
   `id` int(11) NOT NULL,
   `bloc` varchar(1) NOT NULL,
   `numero` int(11) NOT NULL,
-  `type` varchar(10) NOT NULL,
+  `type` varchar(50) NOT NULL,
   `nbChambre` int(11) NOT NULL,
   `prixLoyer` int(11) NOT NULL,
-  `idLocataire` int(11) DEFAULT NULL
+  `idLocataire` int(11) DEFAULT NULL,
+  `description` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `logement`
+--
+
+INSERT INTO `logement` (`id`, `bloc`, `numero`, `type`, `nbChambre`, `prixLoyer`, `idLocataire`, `description`) VALUES
+(1, 'A', 20, 'Appartement', 2, 500, NULL, 'Description Random Du site'),
+(2, 'B', 25, 'Maison', 5, 1000, NULL, 'Description maison');
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `nomsite`
+-- Table structure for table `nomsite`
 --
 
 CREATE TABLE `nomsite` (
@@ -141,20 +150,30 @@ CREATE TABLE `nomsite` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `offres`
+-- Table structure for table `offres`
 --
 
 CREATE TABLE `offres` (
-  `id_o` int(50) NOT NULL,
-  `description_o` varchar(100) NOT NULL,
-  `date_o` varchar(100) NOT NULL,
-  `lieu_o` varchar(100) NOT NULL
+  `id` int(11) NOT NULL,
+  `idLogement` int(11) NOT NULL,
+  `promotion` int(11) NOT NULL,
+  `PrixInitiale` int(11) NOT NULL,
+  `PrixFinale` int(11) NOT NULL,
+  `DateFin` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `typeLogement` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `offres`
+--
+
+INSERT INTO `offres` (`id`, `idLogement`, `promotion`, `PrixInitiale`, `PrixFinale`, `DateFin`, `typeLogement`) VALUES
+(1, 1, 50, 500, 250, '2021-11-14 18:54:59', 'Appartement');
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `participants`
+-- Table structure for table `participants`
 --
 
 CREATE TABLE `participants` (
@@ -167,7 +186,7 @@ CREATE TABLE `participants` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `users`
+-- Table structure for table `users`
 --
 
 CREATE TABLE `users` (
@@ -181,72 +200,91 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Index pour les tables déchargées
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`id`, `nom`, `prenom`, `email`, `password`, `isAdmin`, `typeCompte`) VALUES
+(1, 'bitri', 'Othman', 'othman.bitri@gmail.com', '0209cd4b0daf7404c29f46532c79e3611a57937b', 0, 0);
+
+--
+-- Indexes for dumped tables
 --
 
 --
--- Index pour la table `avis`
+-- Indexes for table `avis`
 --
 ALTER TABLE `avis`
   ADD PRIMARY KEY (`id`);
 
 --
--- Index pour la table `commentaire`
+-- Indexes for table `commentaire`
 --
 ALTER TABLE `commentaire`
   ADD PRIMARY KEY (`id`);
 
 --
--- Index pour la table `coupon`
+-- Indexes for table `coupon`
 --
 ALTER TABLE `coupon`
   ADD PRIMARY KEY (`id`);
 
 --
--- Index pour la table `offres`
+-- Indexes for table `logement`
 --
-ALTER TABLE `offres`
-  ADD PRIMARY KEY (`id_o`);
+ALTER TABLE `logement`
+  ADD PRIMARY KEY (`id`);
 
 --
--- Index pour la table `users`
+-- Indexes for table `offres`
+--
+ALTER TABLE `offres`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT pour les tables déchargées
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT pour la table `avis`
+-- AUTO_INCREMENT for table `avis`
 --
 ALTER TABLE `avis`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT pour la table `commentaire`
+-- AUTO_INCREMENT for table `commentaire`
 --
 ALTER TABLE `commentaire`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT pour la table `coupon`
+-- AUTO_INCREMENT for table `coupon`
 --
 ALTER TABLE `coupon`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT pour la table `offres`
+-- AUTO_INCREMENT for table `logement`
 --
-ALTER TABLE `offres`
-  MODIFY `id_o` int(50) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `logement`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT pour la table `users`
+-- AUTO_INCREMENT for table `offres`
+--
+ALTER TABLE `offres`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
