@@ -1,6 +1,7 @@
 <?php
 $page_titre = "Accueil";
- include "./includes/header.php";
+include "./includes/header.php";
+
 ?>
   <!---Slides------->
     <div id="slides" class="carousel slide" data-ride="carousel">
@@ -52,19 +53,25 @@ $page_titre = "Accueil";
   <div class="container-fluid padding">
     <div class="row text-center padding">
       <div class="col-xs-12 col-sm-6 col-md-4">
+        <div class="Fonctionalite">
         <i class="fas fa-wrench"></i>
         <h3>Fonctionalite 1 !</h3>
         <p>Lorem ipsum</p>
       </div>
+      </div>
       <div class="col-xs-12 col-sm-6 col-md-4">
+        <div class="Fonctionalite">
         <i class="fas fa-tree"></i>
         <h3>Fonctionalite 2 !</h3>
         <p>Lorem ipsum</p>
       </div>
+      </div>
       <div class="col-sm-2 col-md-4">
-        <i class="fas fa-tree"></i>
+        <div class="Fonctionalite">
+        <i class="fas fa-calendar-alt"></i>
         <h3>Fonctionalite 3 !</h3>
         <p>Lorem ipsum</p>
+      </div>
       </div>
     </div>
     <hr class="my-4">
@@ -80,36 +87,33 @@ $page_titre = "Accueil";
   </div>
   <div class="container mt-5 mb-5">
     <div class="row g-2">
-        <div class="col-md-4">
+      <?php
+      $i = nombreAvis();
+      if($i == 0){ ?>
+        <div class="col-md-2">
             <div class="card p-3 text-center px-4">
-                <div class="user-image"> <img src="" class="rounded-circle" width="80"> </div>
                 <div class="user-content">
-                    <h5 class="mb-0">Nom Prenom</h5>
-                    <p>Lorem ipsum</p>
+                    <h5 class="mb-0">Aucun n'avis existe sur le site</h5>
                 </div>
-                <div class="ratings"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> </div>
             </div>
         </div>
+      <?php } ?>
         <div class="col-md-4">
-            <div class="card p-3 text-center px-4">
-                <div class="user-image"> <img src="" class="rounded-circle" width="80"> </div>
-                <div class="user-content">
-                    <h5 class="mb-0">Nom Prenom</h5>
-                    <p>Lorem ipsum</p>
-                </div>
-                <div class="ratings"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> </div>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="card p-3 text-center px-4">
-                <div class="user-image"> <img src="" class="rounded-circle" width="80"> </div>
-                <div class="user-content">
-                    <h5 class="mb-0">Nom Prenom</h5>
-                    <p>Lorem ipsum</p>
-                </div>
-                <div class="ratings"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> </div>
-            </div>
-        </div>
+              <div class="card p-3 text-center px-4">
+                  <div class="user-image"> <img src="" class="rounded-circle" width="80"> </div>
+                  <div class="user-content">
+                      <h5 class="mb-0"><?php
+
+
+
+                      ?></h5>
+                      <p>Lorem ipsum</p>
+                  </div>
+                  <div class="ratings"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> </div>
+              </div>
+          </div>
+
+      </div>
     </div>
 </div>
 

@@ -1,4 +1,7 @@
-<!DOCTYPE html>
+<?php
+require("../config.php");
+require("../controller/avisC.php");
+?>
 <html lang="fr">
   <head>
     <meta charset="utf-8">
@@ -12,12 +15,12 @@
     <header class="sticky-top">
       <nav class="navbar navbar-expand-md nav nav-tabs navbar-light">
         <div class="container-fluid navbar-inner">
-          <a class="navbar-brand" href="/index.php"><img src=""></a>
+          <a class="navbar-brand" href="./index.php"><img src="#"></a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
   					     <span class="navbar-toggler-icon"></span>
   			   </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
-          <ul class="navbar-nav mr-auto">
+          <ul class="navbar-nav ml-auto">
             <li class="nav-item">
 							<li><a class="nav-link text-light" href="./Logement.php">Nos Logement</a></li>
 						</li>
@@ -27,14 +30,23 @@
             <li class="nav-item">
 							<li><a class="nav-link text-light" href="./offres.php">Nos Offres et Promotions</a></li>
 						</li>
-          </ul>
-          <ul class="navbar-nav ml-auto">
+            <?php if (!isset($_SESSION['name'])) { ?>
             <li class="nav-item">
-              <li><a class="nav-link text-light" href="./login.php">Connection</a></li>
+              <li><a class="nav-link text-light" target="_blank" href="./login.php">Connection</a></li>
             </li>
             <li class="nav-item">
-              <li><a class="nav-link text-light" href="./register.php">Inscription</a></li>
+              <li><a class="nav-link text-light" target="_blank" href="./register.php">Inscription</a></li>
             </li>
+          <?php } else { ?>
+            <ul class="navbar-nav ml-auto">
+						<li class="nav-item">
+							<li><a class="nav-link text-light" href="/profil.php"><?php echo $userinfo['prenom']; ?></a></li>
+						</li>
+						<li class="nav-item">
+							<li><a class="nav-link text-light" href="/logout.php">SE DECONNECTER</a></li>
+						</li>
+					</ul>
+        <?php } ?>
           </ul>
           </div>
         </div>

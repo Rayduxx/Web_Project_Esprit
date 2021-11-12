@@ -1,3 +1,1 @@
-<?php
-header("./view/index.php");
- ?>
+<?php header("./view/index.php"); ?>

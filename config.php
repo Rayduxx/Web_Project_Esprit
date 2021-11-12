@@ -1,20 +1,11 @@
 <?php
-class config{
-  private static $pdo = NULL;
-  public static function getConnexion(){
-    if(!isset(self::$pdo)){
-                try{
-                    self::$pdo = new PDO('mysql:host=localhost;dbname=projet_web;charset=utf8', 'root','',
-                        [
-                            PDO::ATTR_ERRMODE =>PDO::ERRMODE_EXCEPTION,
-                            PDO::ATTR_DEFAULT_FETCH_MODE=>PDO::FETCH_ASSOC
-                    ]);
-                } catch (Exception $e){
-                    die('Erreur :'. $e->getMessage());
-                }
-            }
-            return self::$pdo;
-        }
+session_start();
+try {
+    $bdd = new PDO('mysql:host=localhost;dbname=projet_web;charset=utf8', 'root', '');
+}
+catch(Exception $e)
+{
+	die('Echec de connexion à la base de donnée : '.$e->getMessage());
 }
 function encryptCookie($value){
    if(!$value){return false;}
@@ -34,9 +25,24 @@ function decryptCookie($value){
    $decrypttext = mcrypt_decrypt(MCRYPT_RIJNDAEL_256, $key, $crypttext, MCRYPT_MODE_ECB, $iv);
    return trim($decrypttext);
 }
-if(isset($_COOKIE['accept_cookie'])) {
-  $showcookie = false;
-} else {
-  $showcookie = true;
+
+if(!isset($_SESSION['id']) AND isset($_COOKIE['email'],$_COOKIE['password']) AND !empty($_COOKIE['email']) AND !empty($_COOKIE['password'])) {
+    $email = $_COOKIE['email'];
+    $mdp = $_COOKIE['password'];
+    $requser = $bdd->prepare("SELECT * FROM users WHERE email = ? AND password = ?");
+    $requser->execute(array($email,$mdp));
+    $userexist = $requser->rowCount();
+    if($userexist == 1)
+    {
+        $userinfo = $requser->fetch();
+        $_SESSION['id'] = $userinfo['id'];
+        $_SESSION['email'] = $userinfo['email'];
+        $_SESSION['email'] = $userinfo['email'];
+    }
 }
+if(isset($_COOKIE['accept_cookie'])) {
+      $showcookie = false;
+    } else {
+      $showcookie = true;
+    }
 ?>

@@ -1,5 +1,6 @@
 <?php
-require '../config.php'
+require '../config.php';
+require '../model/user.php';
 class UserC{
   function afficherUser(){
     $sql = "SELECT * FROM users";
