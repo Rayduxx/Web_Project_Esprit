@@ -80,12 +80,12 @@ include "./includes/header.php";
   <div class="container-fluid padding">
     <div class="row welcome text-center">
       <div class="col-12">
-        <p class="lead">Temoignages et Avis !</p>
+        <p class="lead">Temoignage et Avis aleatoire !</p>
         <hr class="my-4">
       </div>
     </div>
   </div>
-  <div class="container mt-5 mb-5">
+  <div class="container mt-5 mb-5 ">
     <div class="row g-2">
       <?php
       $i = nombreAvis();
@@ -97,40 +97,41 @@ include "./includes/header.php";
                 </div>
             </div>
         </div>
-      <?php } else if($i < 3 && $i > 0){ ?>
-        <div class="col-md-4">
+      <?php } else{
+
+        $selectID = $bdd->query("SELECT id FROM avis ORDER BY rand() LIMIT 1");
+        $selectID->execute();
+        $A = $selectID->fetch();
+        $selectAvis = $bdd->prepare("SELECT * FROM avis WHERE id = ?");
+        $selectAvis->execute(array($A['id']));
+        $B = $selectAvis->fetch();
+        $selectUser = $bdd->prepare("SELECT * FROM users WHERE id = ?");
+        $selectUser->execute(array($B['id_user']));
+        $C = $selectUser->fetch();
+         ?>
+        <div class="col-md-12">
               <div class="card p-3 text-center px-4">
-                  <div class="user-image"> <img src="" class="rounded-circle" width="80"> </div>
+                  <div class="user-image"> <img src="<?php echo $C['photo'];?>" class="rounded-circle" width="80"> </div>
+                  <br/>
                   <div class="user-content">
                       <h5 class="mb-0"><?php
-
-
-
-                      ?></h5>
-                      <p>Lorem ipsum</p>
+                      echo $C['nom'];echo " "; echo $C['prenom'];?>
+                    </h5><br/>
+                      <p><?php
+                      $selectComment = $bdd->prepare("SELECT * FROM commentaire WHERE id_avis = ?");
+                      $selectComment->execute(array($A['id']));
+                      $D = $selectComment->fetch();
+                       echo $D['commentaire'];?></p>
                   </div>
-                  <div class="ratings"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> </div>
+                  <div class="ratings"><?php
+                  $z = 0;
+                   while($z < $B['rate']) {
+                    $z++;?>
+                    <i class="fa fa-star"></i><?php } ?> </div>
               </div>
           </div>
-        <?php } else {
-          $j = 0;
-          while($j < 3){
-            $j++;?>
-            <div class="col-md-4">
-                  <div class="card p-3 text-center px-4">
-                      <div class="user-image"> <img src="" class="rounded-circle" width="80"> </div>
-                      <div class="user-content">
-                          <h5 class="mb-0"><?php
+        <?php } ?>
 
-
-
-                          ?></h5>
-                          <p>Lorem ipsum</p>
-                      </div>
-                      <div class="ratings"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> </div>
-                  </div>
-              </div>
-        <?php }}?>
       </div>
     </div>
 </div>
