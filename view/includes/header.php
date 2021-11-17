@@ -12,6 +12,8 @@ require("../controller/LogementC.php");
     <link href="../../assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 	  <script src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
 	  <link href="../../assets/css/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../assets/css/tejtrab.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
   </head>
   <body>
     <header class="sticky-top">
@@ -22,31 +24,35 @@ require("../controller/LogementC.php");
   					     <span class="navbar-toggler-icon"></span>
   			   </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
-          <ul class="navbar-nav ml-auto">
+          <ul class="navbar-nav me-auto">
             <li class="nav-item">
 							<li><a class="nav-link text-light" href="./Logement.php">Nos Logement</a></li>
 						</li>
             <li class="nav-item">
 							<li><a class="nav-link text-light" href="./events.php">Nos Evenement</a></li>
 						</li>
-            <?php if (!isset($_SESSION['name'])) { ?>
+            <?php if (!isset($_SESSION['email'])) { ?>
             <li class="nav-item">
               <li><a class="nav-link text-light" target="_blank" href="./login.php">Connection</a></li>
             </li>
             <li class="nav-item">
               <li><a class="nav-link text-light" target="_blank" href="./register.php">Inscription</a></li>
             </li>
+            </ul>
           <?php } else { ?>
-            <ul class="navbar-nav ml-auto">
+            
+            
 						<li class="nav-item">
-							<li><a class="nav-link text-light" href="/profil.php"><?php echo $userinfo['prenom']; ?></a></li>
+							<li><a class="nav-link text-light" href="./profil.php"><?php echo $userinfo['prenom']; ?></a></li>
 						</li>
+            </ul>
+            <ul class="navbar-nav ms-auto">
 						<li class="nav-item">
-							<li><a class="nav-link text-light" href="/logout.php">SE DECONNECTER</a></li>
+							<li><a class="nav-link text-light" href="./logout.php">SE DECONNECTER</a></li>
 						</li>
 					</ul>
         <?php } ?>
-          </ul>
+          
           </div>
         </div>
       </nav>
