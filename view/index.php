@@ -41,7 +41,7 @@ include "./includes/header.php";
     <div class="row welcome text-center">
       <hr class="my-4">
       <div class="col-12">
-        <h1>Star City </h1>
+        <h1>Sky City </h1>
       </div>
       <div class="col-12">
         <p class="lead">Vivons dans un environnement sain !</p>
