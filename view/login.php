@@ -15,7 +15,7 @@ $page_titre = "Login";
  			$userinfo = $requser->fetch();
  			$_SESSION['id'] = $userinfo['id'];
  			$_SESSION['email'] = $userinfo['email'];
- 			header("Location: /profil.php");
+ 			header("Location: ./profil.php");
  		} else {
  			$erreur = "Votre pseudo et/ou votre mot de passe est incorrect !";
  		}
@@ -53,7 +53,7 @@ $page_titre = "Login";
 						<br/>
 						</div>
 						<div class="container-fluid">
-							<button type="submit" class="btn btn-success">Se connecter </button>
+							<button type="submit" class="btn btn-success" name="formconnexion">Se connecter </button>
 							<a type="button" class="btn btn-primary" href="./register.php"> S'inscrire </a> <br/>
 						</div>
           </div>

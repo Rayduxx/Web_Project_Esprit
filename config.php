@@ -7,6 +7,12 @@ catch(Exception $e)
 {
 	die('Echec de connexion à la base de donnée : '.$e->getMessage());
 }
+if(isset($_SESSION['email'])){
+    $getid = intval($_SESSION['id']);
+    $requser = $bdd->prepare('SELECT * FROM users WHERE id = ?');
+    $requser->execute(array($getid));
+    $userinfo = $requser->fetch();
+}
 function encryptCookie($value){
    if(!$value){return false;}
    $key = 'JCYJhBa3SQtrt1RxWWmBsC8qifO28A40';
