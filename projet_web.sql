@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 12, 2021 at 08:34 PM
+-- Generation Time: Nov 17, 2021 at 07:28 PM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.10
 
@@ -95,6 +95,13 @@ CREATE TABLE `event` (
   `description` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `event`
+--
+
+INSERT INTO `event` (`id`, `name`, `datetime`, `maxParticipant`, `participant`, `isComplete`, `image`, `image2`, `image3`, `image4`, `description`) VALUES
+(1, 'Journee de l\'ecologi', '2021-11-17 16:05:22', 50, 0, 0, '', '', '', '', 'testateasdads');
+
 -- --------------------------------------------------------
 
 --
@@ -125,27 +132,17 @@ CREATE TABLE `logement` (
   `nbChambre` int(11) NOT NULL,
   `prixLoyer` int(11) NOT NULL,
   `idLocataire` int(11) DEFAULT NULL,
-  `description` varchar(255) NOT NULL
+  `description` varchar(255) NOT NULL,
+  `image` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `logement`
 --
 
-INSERT INTO `logement` (`id`, `bloc`, `numero`, `type`, `nbChambre`, `prixLoyer`, `idLocataire`, `description`) VALUES
-(1, 'A', 20, 'Appartement', 2, 500, NULL, 'Description Random Du site'),
-(2, 'B', 25, 'Maison', 5, 1000, NULL, 'Description maison');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `nomsite`
---
-
-CREATE TABLE `nomsite` (
-  `id` int(11) NOT NULL,
-  `nomsite` varchar(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+INSERT INTO `logement` (`id`, `bloc`, `numero`, `type`, `nbChambre`, `prixLoyer`, `idLocataire`, `description`, `image`) VALUES
+(1, 'A', 20, 'Appartement', 2, 500, NULL, 'Description Random Du site', ''),
+(2, 'B', 25, 'Maison', 5, 1000, NULL, 'Description maison', '');
 
 -- --------------------------------------------------------
 
@@ -193,18 +190,21 @@ CREATE TABLE `users` (
   `id` int(11) NOT NULL,
   `nom` varchar(255) NOT NULL,
   `prenom` varchar(255) NOT NULL,
+  `photo` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
   `isAdmin` int(11) NOT NULL DEFAULT 0,
-  `typeCompte` int(11) NOT NULL DEFAULT 0
+  `typeCompte` int(11) NOT NULL DEFAULT 0,
+  `datecreation` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `nom`, `prenom`, `email`, `password`, `isAdmin`, `typeCompte`) VALUES
-(1, 'bitri', 'Othman', 'othman.bitri@gmail.com', '0209cd4b0daf7404c29f46532c79e3611a57937b', 0, 0);
+INSERT INTO `users` (`id`, `nom`, `prenom`, `photo`, `email`, `password`, `isAdmin`, `typeCompte`, `datecreation`) VALUES
+(1, 'bitri', 'Othman', '', 'othman.bitri@gmail.com', '0209cd4b0daf7404c29f46532c79e3611a57937b', 0, 0, '2021-11-17 18:27:31'),
+(2, 'Chtioui', 'Mouhamed', '', 'mohamedamine.chtioui@esprit.tn', 'da07d663a6039c44fd28995d9d45e8dda610aa4b', 0, 0, '2021-11-17 18:27:31');
 
 --
 -- Indexes for dumped tables
@@ -254,13 +254,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `avis`
 --
 ALTER TABLE `avis`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `commentaire`
 --
 ALTER TABLE `commentaire`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `coupon`
@@ -284,7 +284,7 @@ ALTER TABLE `offres`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
