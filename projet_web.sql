@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 17, 2021 at 07:28 PM
+-- Generation Time: Nov 17, 2021 at 10:53 PM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.10
 
@@ -32,6 +32,18 @@ CREATE TABLE `avis` (
   `id_user` int(11) NOT NULL,
   `rate` int(11) NOT NULL,
   `date_avis` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `ban`
+--
+
+CREATE TABLE `ban` (
+  `id` int(11) NOT NULL,
+  `userId` int(11) NOT NULL,
+  `motif` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -72,7 +84,8 @@ CREATE TABLE `entretient` (
   `Remarque` varchar(255) NOT NULL,
   `prix` int(11) NOT NULL,
   `idAgentEntretient` int(11) NOT NULL,
-  `idAppartement` int(11) NOT NULL
+  `idAppartement` int(11) NOT NULL,
+  `status` int(11) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -165,7 +178,7 @@ CREATE TABLE `offres` (
 --
 
 INSERT INTO `offres` (`id`, `idLogement`, `promotion`, `PrixInitiale`, `PrixFinale`, `DateFin`, `typeLogement`) VALUES
-(1, 1, 50, 500, 250, '2021-11-14 18:54:59', 'Appartement');
+(1, 1, 50, 500, 250, '2021-11-26 18:54:59', 'Appartement');
 
 -- --------------------------------------------------------
 
@@ -203,7 +216,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `nom`, `prenom`, `photo`, `email`, `password`, `isAdmin`, `typeCompte`, `datecreation`) VALUES
-(1, 'bitri', 'Othman', '', 'othman.bitri@gmail.com', '0209cd4b0daf7404c29f46532c79e3611a57937b', 0, 0, '2021-11-17 18:27:31'),
+(1, 'Bitri', 'Othman', '', 'othman.bitri@gmail.com', '0209cd4b0daf7404c29f46532c79e3611a57937b', 0, 0, '2021-11-17 18:27:31'),
 (2, 'Chtioui', 'Mouhamed', '', 'mohamedamine.chtioui@esprit.tn', 'da07d663a6039c44fd28995d9d45e8dda610aa4b', 0, 0, '2021-11-17 18:27:31');
 
 --
@@ -214,6 +227,12 @@ INSERT INTO `users` (`id`, `nom`, `prenom`, `photo`, `email`, `password`, `isAdm
 -- Indexes for table `avis`
 --
 ALTER TABLE `avis`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `ban`
+--
+ALTER TABLE `ban`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -255,6 +274,12 @@ ALTER TABLE `users`
 --
 ALTER TABLE `avis`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `ban`
+--
+ALTER TABLE `ban`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `commentaire`

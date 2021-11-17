@@ -3,13 +3,6 @@ require("../config.php");
 require("../controller/avisC.php");
 require("../controller/LogementC.php");
 require("../controller/eventC.php");
-if(isset($userinfo['email'])){
-$requser = $bdd->prepare('SELECT * FROM ban WHERE userId = ?');
-$requser->execute(array($userinfo['id']));
-$userexist = $requser->rowCount();
-if($userexist == 1) {
-  header('Location: ./ban.php');
-}}
 ?>
 <html lang="fr">
   <head>
