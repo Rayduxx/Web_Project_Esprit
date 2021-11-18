@@ -78,8 +78,6 @@ footer {
 	margin-bottom: 8%;
 }
 
-
-
 .avisP{
   position: relative;
   width: 400px;
@@ -92,7 +90,7 @@ footer {
   justify-content: center;
   flex-direction: column;
 }
-	.avisP .post{
+.avisP .post{
   display: none;
 }
 .avisP .text{
@@ -115,7 +113,7 @@ footer {
 .avisP .star-widget input{
   display: none;
 }
-.star-widget label{
+.avisP .star-widget label{
   font-size: 40px;
   color: #444;
   padding: 10px;
@@ -123,7 +121,7 @@ footer {
   transition: all 0.2s ease;
 }
 .avisP input:not(:checked) ~ label:hover,
-.avisP input:not(:checked) ~ label:hover ~ label{
+input:not(:checked) ~ label:hover ~ label{
   color: #fd4;
 }
 .avisP input:checked ~ label{
@@ -148,7 +146,7 @@ footer {
 .avisP #rate-5:checked ~ form header:before{
   content: "I just love it ";
 }
-.avisP form{
+.avisP .container form{
   display: none;
 }
 .avisP input:checked ~ form{

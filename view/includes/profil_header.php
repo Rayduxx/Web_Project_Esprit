@@ -1,6 +1,10 @@
-<?php 
+<?php
 $page_titre = "Profil";
-include 'header.php'; ?>
+include 'header.php';
+if(!isset($userinfo['id'])){
+  header("Location: login.php");
+}
+?>
 <br/> <br/> <br/>
 
     <div class="card">
@@ -11,15 +15,29 @@ include 'header.php'; ?>
                     <li class="nav-item">
                         <li><a class="nav-link" href="./profil.php">Profil</a></li>
                     </li>
+                    <?php if($userinfo['typeCompte'] == 0)  {?>
                     <li class="nav-item">
-                        <li><a class="nav-link" href="./gestion_logement.php">Gestion de votre Logement</a></li>
+                        <li><a class="nav-link" href="./gestion_logement_user.php">Gestion de vos Logement</a></li>
+                    </li>
+                    <li class="nav-item">
+                        <li><a class="nav-link" href="./event_user.php">Evenement</a></li>
                     </li>
                     <li class="nav-item">
                         <li><a class="nav-link" href="./avis.php">Poster un Avis</a></li>
                     </li>
+                  <?php } else { ?>
+                    <li class="nav-item">
+                        <li><a class="nav-link" href="./gestion_entretient_agent.php">Entretient</a></li>
+                    </li>
+                  <?php } if($userinfo['isAdmin'] == 1){ ?>
+                    <li class="nav-item">
+                        <li><a class="nav-link" href="./admin">Admin Dashboard</a></li>
+                    </li>
+                  <?php } ?>
                     <li class="nav-item">
                         <li><a class="nav-link" href="./modifier_profil.php">Modifier votre profil</a></li>
                     </li>
+
                 </ul>
             </nav>
         </div>
