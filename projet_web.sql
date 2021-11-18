@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 17, 2021 at 10:53 PM
+-- Generation Time: Nov 18, 2021 at 08:12 PM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.10
 
@@ -80,10 +80,10 @@ CREATE TABLE `coupon` (
 
 CREATE TABLE `entretient` (
   `id` int(11) NOT NULL,
-  `TimeDateEntretient` timestamp NOT NULL DEFAULT current_timestamp(),
+  `TimeDateEntretient` timestamp NULL DEFAULT current_timestamp(),
   `Remarque` varchar(255) NOT NULL,
-  `prix` int(11) NOT NULL,
-  `idAgentEntretient` int(11) NOT NULL,
+  `prix` int(11) DEFAULT NULL,
+  `idAgentEntretient` int(11) DEFAULT NULL,
   `idAppartement` int(11) NOT NULL,
   `status` int(11) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -96,7 +96,7 @@ CREATE TABLE `entretient` (
 
 CREATE TABLE `event` (
   `id` int(11) NOT NULL,
-  `name` varchar(20) NOT NULL,
+  `name` varchar(255) NOT NULL,
   `datetime` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `maxParticipant` int(11) NOT NULL,
   `participant` int(11) NOT NULL,
@@ -113,7 +113,7 @@ CREATE TABLE `event` (
 --
 
 INSERT INTO `event` (`id`, `name`, `datetime`, `maxParticipant`, `participant`, `isComplete`, `image`, `image2`, `image3`, `image4`, `description`) VALUES
-(1, 'Journee de l\'ecologi', '2021-11-17 16:05:22', 50, 0, 0, '', '', '', '', 'testateasdads');
+(1, 'Journee de l\'ecologie', '2021-11-18 15:27:09', 50, 0, 0, '', '', '', '', 'testateasdads');
 
 -- --------------------------------------------------------
 
@@ -130,6 +130,13 @@ CREATE TABLE `location` (
   `DebutLocation` timestamp NOT NULL DEFAULT current_timestamp(),
   `etat` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `location`
+--
+
+INSERT INTO `location` (`id`, `idLogement`, `idLocataire`, `prix`, `remarques`, `DebutLocation`, `etat`) VALUES
+(1, 1, 1, 200, 'tesat', '2021-11-18 16:28:13', 0);
 
 -- --------------------------------------------------------
 
@@ -154,7 +161,7 @@ CREATE TABLE `logement` (
 --
 
 INSERT INTO `logement` (`id`, `bloc`, `numero`, `type`, `nbChambre`, `prixLoyer`, `idLocataire`, `description`, `image`) VALUES
-(1, 'A', 20, 'Appartement', 2, 500, NULL, 'Description Random Du site', ''),
+(1, 'A', 20, 'Appartement', 2, 500, 1, 'Description Random Du site', ''),
 (2, 'B', 25, 'Maison', 5, 1000, NULL, 'Description maison', '');
 
 -- --------------------------------------------------------
@@ -248,6 +255,24 @@ ALTER TABLE `coupon`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `entretient`
+--
+ALTER TABLE `entretient`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `event`
+--
+ALTER TABLE `event`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `location`
+--
+ALTER TABLE `location`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `logement`
 --
 ALTER TABLE `logement`
@@ -257,6 +282,12 @@ ALTER TABLE `logement`
 -- Indexes for table `offres`
 --
 ALTER TABLE `offres`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `participants`
+--
+ALTER TABLE `participants`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -294,6 +325,24 @@ ALTER TABLE `coupon`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `entretient`
+--
+ALTER TABLE `entretient`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `event`
+--
+ALTER TABLE `event`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `location`
+--
+ALTER TABLE `location`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT for table `logement`
 --
 ALTER TABLE `logement`
@@ -303,6 +352,12 @@ ALTER TABLE `logement`
 -- AUTO_INCREMENT for table `offres`
 --
 ALTER TABLE `offres`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `participants`
+--
+ALTER TABLE `participants`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
