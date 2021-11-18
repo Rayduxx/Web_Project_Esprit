@@ -17,7 +17,7 @@ $page_titre = "Login";
  			$_SESSION['email'] = $userinfo['email'];
  			header("Location: ./profil.php");
  		} else {
- 			$erreur = "Votre pseudo et/ou votre mot de passe est incorrect !";
+ 			$erreur = "Votre email et/ou votre mot de passe sont incorrect !";
  		}
  	} else {
  		$erreur = "Tout les champs doivent être complété ! ";

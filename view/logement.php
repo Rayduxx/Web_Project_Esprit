@@ -25,7 +25,7 @@ include "./includes/header.php";
            <li class="list-group-item padding">
              <div class="row align-items col-md-12">
                <div class="row col-md-3">
-                 <img src="" />
+                 <img src="<?php echo $A['image'];?>" />
               </div>
               <div class="row col-md-3 padding">
                <p> <?php echo $A['description'];

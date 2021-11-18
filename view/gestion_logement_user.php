@@ -4,7 +4,7 @@
 if($userinfo['typeCompte'] == 0){
 $j = NombreLogementUser($userinfo['id']);
  ?>
-  <table>
+  <table class="table">
     <thead>
       <tr>
         <th scope="col"># du logement</th>
@@ -31,7 +31,7 @@ $j = NombreLogementUser($userinfo['id']);
         <td><?php echo $A['id'];?></td>
         <td><?php echo $B['type'];?></td>
         <td><?php echo $B['bloc'];?></td>
-        <td><?php echo $A['prix'];?></td>
+        <td><?php echo $A['prix'];?> TND</td>
         <td><?php echo $A['DebutLocation'];?></td>
         <td><a class="btn btn-warning" type="button" href="action_logement_user.php?idLocation=<?php echo $A['id'];?>">Plus d'action</a></td>
       </tr>

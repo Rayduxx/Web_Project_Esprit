@@ -30,7 +30,7 @@ function NombreOffre($i){
               <th scope="col">Promotion</th>
               <th scope="col">Prix Initiale</th>
               <th scope="col">Prix Finale</th>
-              <th scope="col">Date Expiration</th>
+              <th scope="col">Temps Expiraton</th>
             </tr>
           </thead>
           <tbody>
@@ -39,7 +39,8 @@ function NombreOffre($i){
               <td><?php echo $A['PrixInitiale']; ?></td>
               <td> <?php echo $A['PrixFinale']; ?></td>
               <td><?php
-               echo date('d/m/Y H:i:s', strtotime($A));
+			        $j = strtotime($A['DateFin']) - time();
+              echo date('H:i:s', $j);
                ?></td>
             </tr>
           </tbody>

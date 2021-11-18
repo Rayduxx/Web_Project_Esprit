@@ -49,6 +49,7 @@ if(isset($_POST['forminscription'])) {
 
 
 ?>
+<br/><br/>
 	<div class="container">
 		<div class="input-lg">
 			<div class="card">
