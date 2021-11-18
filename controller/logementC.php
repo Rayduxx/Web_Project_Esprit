@@ -28,4 +28,11 @@ function NombreInterventionEnCoursAgent($i){
   $result = $query->rowCount();
   return $result;
 }
+function NombreInterventionLogement($i){
+  $bdd = new PDO('mysql:host=localhost;dbname=projet_web;charset=utf8', 'root', '');
+  $query = $bdd->prepare("SELECT * FROM entretient WHERE idAppartement = ?");
+  $query->execute(array($i));
+  $result = $query->rowCount();
+  return $result;
+}
 ?>
