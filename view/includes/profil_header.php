@@ -2,7 +2,7 @@
 $page_titre = "Profil";
 include 'header.php';
 if(!isset($userinfo['id'])){
-  header("Location: login.php");
+  header("Location: ./login.php");
 }
 ?>
 <br/> <br/> <br/>
@@ -27,7 +27,10 @@ if(!isset($userinfo['id'])){
                     </li>
                   <?php } else { ?>
                     <li class="nav-item">
-                        <li><a class="nav-link" href="./gestion_entretient_agent.php">Entretient</a></li>
+                        <li><a class="nav-link" href="./gestion_entretient_agent.php">Liste d'Intervention</a></li>
+                    </li>
+                    <li class="nav-item">
+                        <li><a class="nav-link" href="./liste_entretient_agent.php">Intervention En Attente</a></li>
                     </li>
                   <?php } if($userinfo['isAdmin'] == 1){ ?>
                     <li class="nav-item">
