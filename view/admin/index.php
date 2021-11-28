@@ -26,7 +26,6 @@
             <ul>
                 <li><a href="">Dashboard</a> </li>
                 <li><a href="">Gestions Users</a> </li>
-                <li><a href="">Gestion Promotions</a> </li>
                 <li><a href="">Gestion Logement</a> </li>
                 <li><a href="#" disabled>Gestions Blog</a> </li>
                 <li><a href="">Gestion Avis</a> </li>
