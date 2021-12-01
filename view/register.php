@@ -15,7 +15,7 @@ if(isset($_POST['forminscription'])) {
 	$password2 = sha1($_POST['password2']);
 	if(!empty($_POST['email']) AND !empty($_POST['email2']) AND !empty($_POST['nom']) AND !empty($_POST['prenom']) AND !empty($_POST['password']) AND !empty($_POST['password2'])) {
 		$namelength = strlen($prenom);
-    $nomlength = strlen($nom);
+    	$nomlength = strlen($nom);
 		if( $namelength <= 255 && $nomlength <= 255) {
 			if($email == $email2) {
 				if(filter_var($email, FILTER_VALIDATE_EMAIL)) {
