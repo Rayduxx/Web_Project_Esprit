@@ -3,7 +3,7 @@
         $bdd = new PDO('mysql:host=localhost;dbname=projet_web;charset=utf8', 'root', '');
         $j = 0;
         while($j < $i){
-            $code = "PR".substr(str_shuffle(str_repeat('0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ',$l-2)),0,$l-2);
+            $code = "PR".substr(str_shuffle(str_repeat('0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ',$10-2)),0,$10-2);
             $selectID = $bdd->query("SELECT id FROM users ORDER BY rand() LIMIT 1");
             $selectID->execute();
             $A = $selectID->fetch();
