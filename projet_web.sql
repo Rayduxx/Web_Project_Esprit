@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 18, 2021 at 08:12 PM
+-- Generation Time: Dec 06, 2021 at 07:37 PM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.10
 
@@ -43,7 +43,7 @@ CREATE TABLE `avis` (
 CREATE TABLE `ban` (
   `id` int(11) NOT NULL,
   `userId` int(11) NOT NULL,
-  `motif` varchar(255) NOT NULL
+  `motif` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -87,6 +87,15 @@ CREATE TABLE `entretient` (
   `idAppartement` int(11) NOT NULL,
   `status` int(11) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `entretient`
+--
+
+INSERT INTO `entretient` (`id`, `TimeDateEntretient`, `Remarque`, `prix`, `idAgentEntretient`, `idAppartement`, `status`) VALUES
+(5, '2021-12-29 20:23:00', 'yuihkjhgyuikh', 50, 1, 1, 2),
+(6, NULL, 'Probleme tuyeaux', NULL, NULL, 1, 0),
+(7, '2021-12-01 00:00:00', 'probleme electricite', 70, 1, 1, 2);
 
 -- --------------------------------------------------------
 
@@ -185,7 +194,8 @@ CREATE TABLE `offres` (
 --
 
 INSERT INTO `offres` (`id`, `idLogement`, `promotion`, `PrixInitiale`, `PrixFinale`, `DateFin`, `typeLogement`) VALUES
-(1, 1, 50, 500, 250, '2021-11-26 18:54:59', 'Appartement');
+(1, 1, 50, 500, 250, '2021-11-26 18:54:59', 'Appartement'),
+(3, 2, 50, 100, 50, '2021-11-27 08:22:23', 'Maison');
 
 -- --------------------------------------------------------
 
@@ -223,8 +233,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `nom`, `prenom`, `photo`, `email`, `password`, `isAdmin`, `typeCompte`, `datecreation`) VALUES
-(1, 'Bitri', 'Othman', '', 'othman.bitri@gmail.com', '0209cd4b0daf7404c29f46532c79e3611a57937b', 0, 0, '2021-11-17 18:27:31'),
-(2, 'Chtioui', 'Mouhamed', '', 'mohamedamine.chtioui@esprit.tn', 'da07d663a6039c44fd28995d9d45e8dda610aa4b', 0, 0, '2021-11-17 18:27:31');
+(1, 'Bitri', 'Othman', '', 'othman.bitri@gmail.com', '0209cd4b0daf7404c29f46532c79e3611a57937b', 1, 0, '2021-11-17 18:27:31'),
+(4, 'Zrig', 'Mouhamed', '', 'mohamedamine.chtioui@esprit.tn', '251f18d4e6b31f7e8ee5bbc62db713101e85a8c9', 0, 0, '2021-11-24 10:18:08');
 
 --
 -- Indexes for dumped tables
@@ -310,7 +320,7 @@ ALTER TABLE `avis`
 -- AUTO_INCREMENT for table `ban`
 --
 ALTER TABLE `ban`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT for table `commentaire`
@@ -328,7 +338,7 @@ ALTER TABLE `coupon`
 -- AUTO_INCREMENT for table `entretient`
 --
 ALTER TABLE `entretient`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `event`
@@ -352,7 +362,7 @@ ALTER TABLE `logement`
 -- AUTO_INCREMENT for table `offres`
 --
 ALTER TABLE `offres`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `participants`
@@ -364,7 +374,7 @@ ALTER TABLE `participants`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
