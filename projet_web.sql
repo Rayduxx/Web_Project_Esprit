@@ -2,10 +2,10 @@
 -- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Dec 06, 2021 at 07:37 PM
--- Server version: 10.4.21-MariaDB
--- PHP Version: 8.0.10
+-- Hôte : localhost
+-- Généré le : mar. 14 déc. 2021 à 17:05
+-- Version du serveur : 10.4.21-MariaDB
+-- Version de PHP : 8.0.13
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,13 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `projet_web`
+-- Base de données : `projet_web`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `avis`
+-- Structure de la table `avis`
 --
 
 CREATE TABLE `avis` (
@@ -37,7 +37,7 @@ CREATE TABLE `avis` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `ban`
+-- Structure de la table `ban`
 --
 
 CREATE TABLE `ban` (
@@ -49,7 +49,7 @@ CREATE TABLE `ban` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `commentaire`
+-- Structure de la table `commentaire`
 --
 
 CREATE TABLE `commentaire` (
@@ -62,20 +62,33 @@ CREATE TABLE `commentaire` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `coupon`
+-- Structure de la table `coupon`
 --
 
 CREATE TABLE `coupon` (
   `id` int(11) NOT NULL,
   `code` varchar(10) NOT NULL,
-  `id_offre` int(11) NOT NULL,
-  `status` int(11) NOT NULL DEFAULT 0
+  `iduser` int(11) NOT NULL,
+  `etat` int(11) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Déchargement des données de la table `coupon`
+--
+
+INSERT INTO `coupon` (`id`, `code`, `iduser`, `etat`) VALUES
+(1, 'PR1OZAW0E4', 4, 0),
+(2, 'PRQ5ZBH7QP', 1, 0),
+(3, 'PRCBWA43BF', 4, 0),
+(4, 'PR1F0LIZ61', 1, 0),
+(5, 'PR43BE4I9Z', 1, 0),
+(6, 'PRUGHMK5N8', 4, 0),
+(7, 'PRG8TYY1A4', 4, 0);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `entretient`
+-- Structure de la table `entretient`
 --
 
 CREATE TABLE `entretient` (
@@ -89,7 +102,7 @@ CREATE TABLE `entretient` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `entretient`
+-- Déchargement des données de la table `entretient`
 --
 
 INSERT INTO `entretient` (`id`, `TimeDateEntretient`, `Remarque`, `prix`, `idAgentEntretient`, `idAppartement`, `status`) VALUES
@@ -100,7 +113,7 @@ INSERT INTO `entretient` (`id`, `TimeDateEntretient`, `Remarque`, `prix`, `idAge
 -- --------------------------------------------------------
 
 --
--- Table structure for table `event`
+-- Structure de la table `event`
 --
 
 CREATE TABLE `event` (
@@ -118,7 +131,7 @@ CREATE TABLE `event` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `event`
+-- Déchargement des données de la table `event`
 --
 
 INSERT INTO `event` (`id`, `name`, `datetime`, `maxParticipant`, `participant`, `isComplete`, `image`, `image2`, `image3`, `image4`, `description`) VALUES
@@ -127,7 +140,7 @@ INSERT INTO `event` (`id`, `name`, `datetime`, `maxParticipant`, `participant`, 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `location`
+-- Structure de la table `location`
 --
 
 CREATE TABLE `location` (
@@ -141,7 +154,7 @@ CREATE TABLE `location` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `location`
+-- Déchargement des données de la table `location`
 --
 
 INSERT INTO `location` (`id`, `idLogement`, `idLocataire`, `prix`, `remarques`, `DebutLocation`, `etat`) VALUES
@@ -150,7 +163,7 @@ INSERT INTO `location` (`id`, `idLogement`, `idLocataire`, `prix`, `remarques`, 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `logement`
+-- Structure de la table `logement`
 --
 
 CREATE TABLE `logement` (
@@ -166,7 +179,7 @@ CREATE TABLE `logement` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `logement`
+-- Déchargement des données de la table `logement`
 --
 
 INSERT INTO `logement` (`id`, `bloc`, `numero`, `type`, `nbChambre`, `prixLoyer`, `idLocataire`, `description`, `image`) VALUES
@@ -176,7 +189,7 @@ INSERT INTO `logement` (`id`, `bloc`, `numero`, `type`, `nbChambre`, `prixLoyer`
 -- --------------------------------------------------------
 
 --
--- Table structure for table `offres`
+-- Structure de la table `offres`
 --
 
 CREATE TABLE `offres` (
@@ -190,17 +203,18 @@ CREATE TABLE `offres` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `offres`
+-- Déchargement des données de la table `offres`
 --
 
 INSERT INTO `offres` (`id`, `idLogement`, `promotion`, `PrixInitiale`, `PrixFinale`, `DateFin`, `typeLogement`) VALUES
-(1, 1, 50, 500, 250, '2021-11-26 18:54:59', 'Appartement'),
-(3, 2, 50, 100, 50, '2021-11-27 08:22:23', 'Maison');
+(4, 2, 234, 12, 11, '2021-12-01 23:00:00', 'maison'),
+(5, 4, 500, 12, 1234, '2021-12-30 23:00:00', 'appartement'),
+(6, 2, 50, 123, 11, '2021-12-12 23:00:00', 'maison');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `participants`
+-- Structure de la table `participants`
 --
 
 CREATE TABLE `participants` (
@@ -213,7 +227,7 @@ CREATE TABLE `participants` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `users`
+-- Structure de la table `users`
 --
 
 CREATE TABLE `users` (
@@ -229,7 +243,7 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `users`
+-- Déchargement des données de la table `users`
 --
 
 INSERT INTO `users` (`id`, `nom`, `prenom`, `photo`, `email`, `password`, `isAdmin`, `typeCompte`, `datecreation`) VALUES
@@ -237,141 +251,141 @@ INSERT INTO `users` (`id`, `nom`, `prenom`, `photo`, `email`, `password`, `isAdm
 (4, 'Zrig', 'Mouhamed', '', 'mohamedamine.chtioui@esprit.tn', '251f18d4e6b31f7e8ee5bbc62db713101e85a8c9', 0, 0, '2021-11-24 10:18:08');
 
 --
--- Indexes for dumped tables
+-- Index pour les tables déchargées
 --
 
 --
--- Indexes for table `avis`
+-- Index pour la table `avis`
 --
 ALTER TABLE `avis`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `ban`
+-- Index pour la table `ban`
 --
 ALTER TABLE `ban`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `commentaire`
+-- Index pour la table `commentaire`
 --
 ALTER TABLE `commentaire`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `coupon`
+-- Index pour la table `coupon`
 --
 ALTER TABLE `coupon`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `entretient`
+-- Index pour la table `entretient`
 --
 ALTER TABLE `entretient`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `event`
+-- Index pour la table `event`
 --
 ALTER TABLE `event`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `location`
+-- Index pour la table `location`
 --
 ALTER TABLE `location`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `logement`
+-- Index pour la table `logement`
 --
 ALTER TABLE `logement`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `offres`
+-- Index pour la table `offres`
 --
 ALTER TABLE `offres`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `participants`
+-- Index pour la table `participants`
 --
 ALTER TABLE `participants`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `users`
+-- Index pour la table `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT pour les tables déchargées
 --
 
 --
--- AUTO_INCREMENT for table `avis`
+-- AUTO_INCREMENT pour la table `avis`
 --
 ALTER TABLE `avis`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT for table `ban`
+-- AUTO_INCREMENT pour la table `ban`
 --
 ALTER TABLE `ban`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
--- AUTO_INCREMENT for table `commentaire`
+-- AUTO_INCREMENT pour la table `commentaire`
 --
 ALTER TABLE `commentaire`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT for table `coupon`
+-- AUTO_INCREMENT pour la table `coupon`
 --
 ALTER TABLE `coupon`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
--- AUTO_INCREMENT for table `entretient`
+-- AUTO_INCREMENT pour la table `entretient`
 --
 ALTER TABLE `entretient`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
--- AUTO_INCREMENT for table `event`
+-- AUTO_INCREMENT pour la table `event`
 --
 ALTER TABLE `event`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT for table `location`
+-- AUTO_INCREMENT pour la table `location`
 --
 ALTER TABLE `location`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT for table `logement`
+-- AUTO_INCREMENT pour la table `logement`
 --
 ALTER TABLE `logement`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT for table `offres`
+-- AUTO_INCREMENT pour la table `offres`
 --
 ALTER TABLE `offres`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
--- AUTO_INCREMENT for table `participants`
+-- AUTO_INCREMENT pour la table `participants`
 --
 ALTER TABLE `participants`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT for table `users`
+-- AUTO_INCREMENT pour la table `users`
 --
 ALTER TABLE `users`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
