@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 14, 2021 at 09:19 PM
+-- Generation Time: Dec 14, 2021 at 10:50 PM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 7.4.26
 
@@ -62,7 +62,6 @@ CREATE TABLE `ban` (
 CREATE TABLE `commentaire` (
   `id` int(11) NOT NULL,
   `commentaire` varchar(255) NOT NULL,
-  `date` timestamp NOT NULL DEFAULT current_timestamp(),
   `id_avis` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -70,8 +69,8 @@ CREATE TABLE `commentaire` (
 -- Dumping data for table `commentaire`
 --
 
-INSERT INTO `commentaire` (`id`, `commentaire`, `date`, `id_avis`) VALUES
-(4, 'test', '2021-12-14 19:16:56', 4);
+INSERT INTO `commentaire` (`id`, `commentaire`, `id_avis`) VALUES
+(4, 'test', 4);
 
 -- --------------------------------------------------------
 
@@ -82,7 +81,6 @@ INSERT INTO `commentaire` (`id`, `commentaire`, `date`, `id_avis`) VALUES
 CREATE TABLE `coupon` (
   `id` int(11) NOT NULL,
   `code` varchar(10) NOT NULL,
-  `iduser` int(11) NOT NULL,
   `etat` int(11) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -90,14 +88,14 @@ CREATE TABLE `coupon` (
 -- Dumping data for table `coupon`
 --
 
-INSERT INTO `coupon` (`id`, `code`, `iduser`, `etat`) VALUES
-(1, 'PR1OZAW0E4', 4, 0),
-(2, 'PRQ5ZBH7QP', 1, 0),
-(3, 'PRCBWA43BF', 4, 0),
-(4, 'PR1F0LIZ61', 1, 0),
-(5, 'PR43BE4I9Z', 1, 0),
-(6, 'PRUGHMK5N8', 4, 0),
-(7, 'PRG8TYY1A4', 4, 0);
+INSERT INTO `coupon` (`id`, `code`, `etat`) VALUES
+(1, 'PR1OZAW0E4', 0),
+(2, 'PRQ5ZBH7QP', 0),
+(3, 'PRCBWA43BF', 0),
+(4, 'PR1F0LIZ61', 0),
+(5, 'PR43BE4I9Z', 0),
+(6, 'PRUGHMK5N8', 0),
+(7, 'PRG8TYY1A4', 0);
 
 -- --------------------------------------------------------
 
@@ -111,18 +109,9 @@ CREATE TABLE `entretient` (
   `Remarque` varchar(255) NOT NULL,
   `prix` int(11) DEFAULT NULL,
   `idAgentEntretient` int(11) DEFAULT NULL,
-  `idAppartement` int(11) NOT NULL,
+  `idContrat` int(11) NOT NULL,
   `status` int(11) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `entretient`
---
-
-INSERT INTO `entretient` (`id`, `TimeDateEntretient`, `Remarque`, `prix`, `idAgentEntretient`, `idAppartement`, `status`) VALUES
-(5, '2021-12-29 20:23:00', 'yuihkjhgyuikh', 50, 1, 1, 2),
-(6, NULL, 'Probleme tuyeaux', NULL, NULL, 1, 0),
-(7, '2021-12-01 00:00:00', 'probleme electricite', 70, 1, 1, 2);
 
 -- --------------------------------------------------------
 
@@ -136,7 +125,6 @@ CREATE TABLE `event` (
   `datetime` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `maxParticipant` int(11) NOT NULL,
   `participant` int(11) NOT NULL,
-  `isComplete` int(11) NOT NULL DEFAULT 0,
   `image` varchar(255) NOT NULL,
   `image2` varchar(255) NOT NULL,
   `image3` varchar(255) NOT NULL,
@@ -148,8 +136,8 @@ CREATE TABLE `event` (
 -- Dumping data for table `event`
 --
 
-INSERT INTO `event` (`id`, `name`, `datetime`, `maxParticipant`, `participant`, `isComplete`, `image`, `image2`, `image3`, `image4`, `description`) VALUES
-(1, 'Journee de l\'ecologie', '2021-11-18 15:27:09', 50, 0, 0, '', '', '', '', 'testateasdads');
+INSERT INTO `event` (`id`, `name`, `datetime`, `maxParticipant`, `participant`, `image`, `image2`, `image3`, `image4`, `description`) VALUES
+(1, 'Journee de l\'ecologie', '2021-11-18 15:27:09', 50, 0, '', '', '', '', 'testateasdads');
 
 -- --------------------------------------------------------
 
@@ -180,13 +168,6 @@ CREATE TABLE `location` (
   `etat` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `location`
---
-
-INSERT INTO `location` (`id`, `idLogement`, `idLocataire`, `prix`, `remarques`, `DebutLocation`, `etat`) VALUES
-(1, 1, 1, 200, 'tesat', '2021-11-18 16:28:13', 0);
-
 -- --------------------------------------------------------
 
 --
@@ -200,7 +181,7 @@ CREATE TABLE `logement` (
   `type` varchar(50) NOT NULL,
   `nbChambre` int(11) NOT NULL,
   `prixLoyer` int(11) NOT NULL,
-  `idLocataire` int(11) DEFAULT NULL,
+  `idContrat` int(11) DEFAULT NULL,
   `description` varchar(255) NOT NULL,
   `image` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -209,8 +190,8 @@ CREATE TABLE `logement` (
 -- Dumping data for table `logement`
 --
 
-INSERT INTO `logement` (`id`, `bloc`, `numero`, `type`, `nbChambre`, `prixLoyer`, `idLocataire`, `description`, `image`) VALUES
-(1, 'A', 20, 'Appartement', 2, 500, 1, 'Description Random Du site', ''),
+INSERT INTO `logement` (`id`, `bloc`, `numero`, `type`, `nbChambre`, `prixLoyer`, `idContrat`, `description`, `image`) VALUES
+(1, 'A', 20, 'Appartement', 2, 500, NULL, 'Description Random Du site', ''),
 (2, 'B', 25, 'Maison', 5, 1000, NULL, 'Description maison', '');
 
 -- --------------------------------------------------------
@@ -285,19 +266,22 @@ INSERT INTO `users` (`id`, `nom`, `prenom`, `photo`, `email`, `password`, `isAdm
 -- Indexes for table `avis`
 --
 ALTER TABLE `avis`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id_user` (`id_user`);
 
 --
 -- Indexes for table `ban`
 --
 ALTER TABLE `ban`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `userId` (`userId`);
 
 --
 -- Indexes for table `commentaire`
 --
 ALTER TABLE `commentaire`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id_avis` (`id_avis`);
 
 --
 -- Indexes for table `coupon`
@@ -309,7 +293,9 @@ ALTER TABLE `coupon`
 -- Indexes for table `entretient`
 --
 ALTER TABLE `entretient`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `idAgentEntretient` (`idAgentEntretient`),
+  ADD KEY `idContrat` (`idContrat`);
 
 --
 -- Indexes for table `event`
@@ -321,19 +307,24 @@ ALTER TABLE `event`
 -- Indexes for table `likes`
 --
 ALTER TABLE `likes`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id_avis` (`id_avis`),
+  ADD KEY `id_user` (`id_user`);
 
 --
 -- Indexes for table `location`
 --
 ALTER TABLE `location`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `idLogement` (`idLogement`),
+  ADD KEY `idLocataire` (`idLocataire`);
 
 --
 -- Indexes for table `logement`
 --
 ALTER TABLE `logement`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `idContrat` (`idContrat`);
 
 --
 -- Indexes for table `offres`
@@ -345,7 +336,9 @@ ALTER TABLE `offres`
 -- Indexes for table `participants`
 --
 ALTER TABLE `participants`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `eventId` (`eventId`),
+  ADD KEY `userId` (`userId`);
 
 --
 -- Indexes for table `users`
@@ -428,6 +421,62 @@ ALTER TABLE `participants`
 --
 ALTER TABLE `users`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `avis`
+--
+ALTER TABLE `avis`
+  ADD CONSTRAINT `avis_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `users` (`id`);
+
+--
+-- Constraints for table `ban`
+--
+ALTER TABLE `ban`
+  ADD CONSTRAINT `ban_ibfk_1` FOREIGN KEY (`userId`) REFERENCES `users` (`id`);
+
+--
+-- Constraints for table `commentaire`
+--
+ALTER TABLE `commentaire`
+  ADD CONSTRAINT `commentaire_ibfk_1` FOREIGN KEY (`id_avis`) REFERENCES `avis` (`id`);
+
+--
+-- Constraints for table `entretient`
+--
+ALTER TABLE `entretient`
+  ADD CONSTRAINT `entretient_ibfk_1` FOREIGN KEY (`idAgentEntretient`) REFERENCES `users` (`id`),
+  ADD CONSTRAINT `entretient_ibfk_2` FOREIGN KEY (`idContrat`) REFERENCES `location` (`id`);
+
+--
+-- Constraints for table `likes`
+--
+ALTER TABLE `likes`
+  ADD CONSTRAINT `likes_ibfk_1` FOREIGN KEY (`id_avis`) REFERENCES `avis` (`id`),
+  ADD CONSTRAINT `likes_ibfk_2` FOREIGN KEY (`id_user`) REFERENCES `users` (`id`);
+
+--
+-- Constraints for table `location`
+--
+ALTER TABLE `location`
+  ADD CONSTRAINT `location_ibfk_1` FOREIGN KEY (`idLogement`) REFERENCES `logement` (`id`),
+  ADD CONSTRAINT `location_ibfk_2` FOREIGN KEY (`idLocataire`) REFERENCES `users` (`id`);
+
+--
+-- Constraints for table `logement`
+--
+ALTER TABLE `logement`
+  ADD CONSTRAINT `logement_ibfk_1` FOREIGN KEY (`idContrat`) REFERENCES `location` (`id`);
+
+--
+-- Constraints for table `participants`
+--
+ALTER TABLE `participants`
+  ADD CONSTRAINT `participants_ibfk_1` FOREIGN KEY (`eventId`) REFERENCES `event` (`id`),
+  ADD CONSTRAINT `participants_ibfk_2` FOREIGN KEY (`userId`) REFERENCES `users` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
