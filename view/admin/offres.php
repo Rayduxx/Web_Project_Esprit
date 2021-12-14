@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -8,11 +8,20 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Courgette&display=swap" rel="stylesheet">   
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@200&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Display&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="offres.css">
     <title>Gestion Offres</title>
 
 </head>
 <body>
- <h1>Ajouter un Offre</h1>
+ <h1 class="row justify-content-center">Ajouter un Offre</h1>
+ <br><br>
  <?php require_once 'AjoutOffres.php';?>
  <?php
 if (isset($_SESSION['message'])): ?>
@@ -35,8 +44,7 @@ unset($_SESSION['message']);
                  <th>IdLogement</th>
                  <th>Type de Logement</th>
                  <th>Promotion</th>
-                 <th>Prix Initilae</th>
-                 <th>Prix Finale</th>
+                 <th>Prix Initilae</th>                 
                  <th>La date </th>
                  <th colspan="2">Action</th>
              </tr>
@@ -45,11 +53,10 @@ unset($_SESSION['message']);
         while ($row = $result->fetch_assoc()): ?>
         <tr>
             <td><?php echo $row['idLogement']; ?></td>
+            <td><?php echo $row['typeLogement']; ?></td>
             <td><?php echo $row['promotion']; ?></td>
             <td><?php echo $row['PrixInitiale']; ?></td>
-            <td><?php echo $row['PrixFinale']; ?></td>
             <td><?php echo $row['DateFin']; ?></td>
-            <td><?php echo $row['typeLogement']; ?></td>
             <td>
                 <a href="offres.php?edit=<?php echo $row['id'];?>"
                 class="btn btn-info">Edit</a>
@@ -106,10 +113,11 @@ unset($_SESSION['message']);
     <?php 
     if ($update == true):
     ?>
-    <button type="submit" class="btn btn-info" name="update">Update</button>
+    <button type="submit" class="btn btn-info " name="update">Update</button>
     <?php else: ?>
-    <button type="submit" class="btn btn-primary"  name="save">Save</button>
+    <button type="submit" class="btn btn-primary "  name="save">Save</button>
     <?php endif; ?>
+   <a href="ajoutCoupon.php"  type="submit" class="btn btn-info" name="coupon">Générer des Coupons</a>
 </div>
     
 
