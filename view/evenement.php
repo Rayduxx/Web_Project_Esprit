@@ -4,7 +4,7 @@ include './includes/header.php';
 
 $selection = $bdd->prepare("SELECT * FROM event WHERE id = ?");
 $selection->execute($_GET['id_Event']);
-
+$evenenement = $selection->fetch();
 ?>
 
 <div class="card">
