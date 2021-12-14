@@ -45,7 +45,7 @@ if($userinfo['isAdmin'] != 1){
                 <li><a href="../users.php">Gestions Users</a> </li>
                 <li><a href="">Gestion Logement</a> </li>
                 <li><a href="#" disabled>Gestions Blog</a> </li>
-                <li><a href="">Gestion Avis</a> </li>
+                <li><a href="../admin_avis.php">Gestion Avis</a> </li>
                 <li><a href="../event_admin_action.php">Gestion Event</a> </li>
             </ul>
         </div>
