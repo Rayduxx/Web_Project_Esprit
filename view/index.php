@@ -1,141 +1,72 @@
-<?php
-$page_titre = "Accueil";
-include "./includes/header.php";
 
-?>
-  <!---Slides------->
-    <div id="slides" class="carousel slide" data-ride="carousel">
-      <ul class="carousel-indicators">
-        <li data-target="#slides" data-slide-to="0" class="active"></li>
-        <li data-target="#slides" data-slide-to="1"></li>
-        <li data-target="#slides" data-slide-to="2"></li>
-      </ul>
-      <div class="carousel-inner active">
-        <div class="carousel-item">
-          <img src="">
-          <div class="carousel-caption">
-            <h1 class="display-3">Vous voulez en savoir plus sur nous ?</h1>
-            <button type="button" class="btn btn-primary btn-md"> F.A.Q </button>
-          </div>
-        </div>
-        <div class="carousel-item">
-          <img src="">
-          <div class="carousel-caption">
-            <h1 class="display-3">Vous voulez vistez un appartement ?</h1>
-            <button type="button" class="btn btn-primary btn-md"> Inscrivez vous </button>
-          </div>
-        </div>
-        <div class="carousel-item">
-          <img src="">
-          <div class="carousel-caption">
-            <h1 class="display-3">Vous voulez participer a un Evenement ?</h1>
-            <button type="button" class="btn btn-primary btn-md"> Inscrivez vous </button>
-          </div>
-        </div>
-      </div>
+
+<!DOCTYPE html>
+<!-- Created By CodingNepal - www.codingnepalweb.com -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subscription Form | CodingNepal</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+</head>
+<body>
+  <input type="checkbox" id="toggle">
+  <label for="toggle" class="show-btn">Show Modal</label>
+  <div class="wrapper">
+    <label for="toggle">
+    <i class="cancel-icon fas fa-times"></i>
+    </label>
+    <div class="icon"><i class="far fa-envelope"></i></div>
+    <div class="content">
+      <header>Become a Subscriber</header>
+      <p>Subscribe to our blog and get the latest updates straight to your inbox.</p>
     </div>
-
-  <!---Welcome section--->
-  <div class="container-fluid padding">
-
-    <div class="row welcome text-center">
-      <hr class="my-4">
-      <div class="col-12">
-        <h1>Star City </h1>
+    <form action="index.php" method="POST">
+    <?php 
+    $userEmail = ""; //first we leave email field blank
+    if(isset($_POST['subscribe'])){ //if subscribe btn clicked
+      $userEmail = $_POST['email']; //getting user entered email
+      if(filter_var($userEmail, FILTER_VALIDATE_EMAIL)){ //validating user email
+        $subject = "Thanks for Subscribing - CodingNepal";
+        $message = "Thanks for subscribing to our blog. You'll always receive updates from us. And we won't share and sell your information.";
+        $sender = "From: siwar.ferchichi@esprit.tn";
+        //php function to send mail
+        if(mail($userEmail, $subject, $message, $sender)){
+          ?>
+           <!-- show sucess message once email send successfully -->
+          <div class="alert success-alert">
+            <?php echo "Thanks for Subscribing us." ?>
+          </div>
+          <?php
+          $userEmail = "";
+        }else{
+          ?>
+          <!-- show error message if somehow mail cant be sent -->
+          <div class="alert error-alert">
+          <?php echo "Failed while sending your mail!" ?>
+          </div>
+          <?php
+        }
+      }else{
+        ?>
+        <!-- show error message if user entered email is not valid -->
+        <div class="alert error-alert">
+          <?php echo "$userEmail is not a valid email address!" ?>
+        </div>
+        <?php
+      }
+    }
+    ?>
+      <div class="field">
+        <input type="text" class="email" name="email" placeholder="Email Address" required value="<?php echo $userEmail ?>">
       </div>
-      <div class="col-12">
-        <p class="lead">Vivons dans un environnement sain !</p>
+      <div class="field btn">
+        <div class="layer"></div>
+        <button type="submit" name="subscribe">Subscribe</button>
       </div>
-    </div>
+    </form>
+    <div class="text">We do not share your information.</div>
   </div>
-  <hr class="my-4">
-  <!---Section--->
-  <div class="container-fluid padding">
-    <div class="row text-center padding">
-      <div class="col-xs-12 col-sm-6 col-md-4">
-        <div class="Fonctionalite">
-        <i class="fas fa-wrench"></i>
-        <h3>Fonctionalite 1 !</h3>
-        <p>Lorem ipsum</p>
-      </div>
-      </div>
-      <div class="col-xs-12 col-sm-6 col-md-4">
-        <div class="Fonctionalite">
-        <i class="fas fa-tree"></i>
-        <h3>Fonctionalite 2 !</h3>
-        <p>Lorem ipsum</p>
-      </div>
-      </div>
-      <div class="col-sm-2 col-md-4">
-        <div class="Fonctionalite">
-        <i class="fas fa-calendar-alt"></i>
-        <h3>Fonctionalite 3 !</h3>
-        <p>Lorem ipsum</p>
-      </div>
-      </div>
-    </div>
-    <hr class="my-4">
-  </div>
-  <!---Testimonies--->
-  <div class="container-fluid padding">
-    <div class="row welcome text-center">
-      <div class="col-12">
-        <p class="lead">Temoignage et Avis aleatoire !</p>
-        <hr class="my-4">
-      </div>
-    </div>
-  </div>
-  <div class="container mt-5 mb-5 ">
-    <div class="row g-2">
-      <?php
-      $i = nombreAvis();
-      if($i == 0){ ?>
-        <div class="col-md-12">
-            <div class="card p-3 text-center px-4">
-                <div class="user-content">
-                    <h5 class="mb-0">Aucun n'avis existe sur le site</h5>
-                </div>
-            </div>
-        </div>
-      <?php } else{
-
-        $selectID = $bdd->query("SELECT id FROM avis ORDER BY rand() LIMIT 1");
-        $selectID->execute();
-        $A = $selectID->fetch();
-        $selectAvis = $bdd->prepare("SELECT * FROM avis WHERE id = ?");
-        $selectAvis->execute(array($A['id']));
-        $B = $selectAvis->fetch();
-        $selectUser = $bdd->prepare("SELECT * FROM users WHERE id = ?");
-        $selectUser->execute(array($B['id_user']));
-        $C = $selectUser->fetch();
-         ?>
-        <div class="col-md-12">
-              <div class="card p-3 text-center px-4">
-                  <div class="user-image"> <img src="<?php echo $C['photo'];?>" class="rounded-circle" width="80"> </div>
-                  <br/>
-                  <div class="user-content">
-                      <h5 class="mb-0"><?php
-                      echo $C['nom'];echo " "; echo $C['prenom'];?>
-                    </h5><br/>
-                      <p><?php
-                      $selectComment = $bdd->prepare("SELECT * FROM commentaire WHERE id_avis = ?");
-                      $selectComment->execute(array($A['id']));
-                      $D = $selectComment->fetch();
-                       echo $D['commentaire'];?></p>
-                  </div>
-                  <div class="ratings"><?php
-                  $z = 0;
-                   while($z < $B['rate']) {
-                    $z++;?>
-                    <i class="fa fa-star"></i><?php } ?> </div>
-              </div>
-          </div>
-        <?php } ?>
-
-      </div>
-    </div>
-</div>
-
-
-
-<?php include "./includes/footer.php"; ?>
+</body>
+</html>
