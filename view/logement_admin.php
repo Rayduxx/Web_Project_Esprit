@@ -177,6 +177,7 @@ if(isset($_POST['ajouter'])){
             </td>
             <td>
               <select id="idLocataire" class="form-select rounded" name="idLocataire">
+                <option value="">Aucun Locataire</option>
                 <?php
                   $selectUM = $bdd->prepare("SELECT * FROM users ORDER BY id");
                   $selectUM->execute();
