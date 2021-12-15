@@ -85,8 +85,8 @@ if(isset($_POST['ajouter'])){
     <div class="container col-lg-6 align-self-center mx-auto">
       <a class="btn btn-success" href="./logement_admin.php?ajouter=1"> Ajouter Logement </a>
       <a class="btn btn-danger" href="./logement_admin.php?supprimer=1"> supprimer Logement </a>
-      <a class="btn btn-info" href="./admin_entretient.php"> Gestion Entretient </a>
-      <a class="btn btn-primary" href="./admin_contrats.php"> Gestion Contrats </a>
+      <a class="btn btn-info disabled" href="#"> Gestion Entretient </a>
+      <a class="btn btn-primary disabled" href="#"> Gestion Contrats </a>
 
     </div>
     <?php if(isset($_GET['supprimer'])){ ?>
