@@ -37,7 +37,7 @@ if($userexist == 1) {
 							<li><a class="nav-link text-light" href="./events.php">Nos Evenement</a></li>
 						</li>
 		 <li class="nav-item">
-							<li><a class="nav-link text-light" href="./mailer.php">Subscription</a></li>
+							<li><a class="nav-link text-light" href="./mailer">Subscription</a></li>
 						</li>
             <?php if (!isset($_SESSION['email'])) { ?>
             <li class="nav-item">

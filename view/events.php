@@ -12,6 +12,22 @@ $page_titre = "Events";
           <h2> Aucun Evenement n'est en cours </h2>
         </div>
     <?php } else {?>
+      <div id="slides" class="carousel slide" data-ride="carousel">
+     <ul class="carousel-indicators">
+      <li data-target="#slides" data-slide-to="0" class="active"></li>
+     </ul>
+     <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="../assets/img/img2.jpg">
+        <div class="carousel-caption">
+          <h1 class="display-2">Sky City !</h1>
+          <h3>Welcome To SkyCity !</h3>
+          <a type="button" class="btn btn-primary btn-lg" href="./index.php">Retour a l'accueil</a>
+          <a type="button" class="btn btn-secondary btn-lg" href="./Logements.php">Voir nos logements</a>
+        </div>
+      </div>
+     </div>
+     </div>
       <div class="card-title text-center">
         <h1> Evennements</h1>
       </div>

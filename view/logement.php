@@ -45,7 +45,23 @@ if(isset($_POST['ValiderCoupon'])){
 }
 
 ?>
- <br/><br/>
+ <!---Slides------->
+ <div id="slides" class="carousel slide" data-ride="carousel">
+<ul class="carousel-indicators">
+ <li data-target="#slides" data-slide-to="0" class="active"></li>
+</ul>
+<div class="carousel-inner">
+ <div class="carousel-item active">
+   <img src="../assets/img/img2.jpg">
+   <div class="carousel-caption">
+     <h1 class="display-2">Sky City !</h1>
+     <h3>Welcome To SkyCity !</h3>
+     <a type="button" class="btn btn-primary btn-lg" href="./index.php">Retour a l'accueil</a>
+     <a type="button" class="btn btn-secondary btn-lg" href="./events.php">Voir nos evenements</a>
+   </div>
+ </div>
+</div>
+</div>
  <?php if(isset($erreur)) {
    echo '<div class="col-lg-6 container"><div class="alert alert-danger" role="alert"> Une erreur est survenu :' .$erreur.'</div></div>';
  }?>

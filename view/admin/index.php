@@ -41,12 +41,12 @@ if($userinfo['isAdmin'] != 1){
     <div class="navbar">
        <div class="menu">
             <ul>
-                <li><a href="">Dashboard</a> </li>
+                <li><a href="../profil.php">Profil</a> </li>
                 <li><a href="../users.php">Gestions Users</a> </li>
-                <li><a href="">Gestion Logement</a> </li>
-                <li><a href="#" disabled>Gestions Blog</a> </li>
+                <li><a href="../logement_admin.php">Gestion Logement</a> </li>
+                <li><a href="./offres.php">Gestions Offres</a> </li>
                 <li><a href="../admin_avis.php">Gestion Avis</a> </li>
-                <li><a href="../event_admin_action.php">Gestion Event</a> </li>
+                <li><a href="../admin_events.php">Gestion Event</a> </li>
             </ul>
         </div>
         <div class="logo">

@@ -4,7 +4,6 @@ if(isset($_POST['formCoupon'])){
 $nombre = htmlspecialchars($_POST['nombre']);
 if(!empty($_POST['nombre'])){
 CreationCoupon($nombre);
-
 }
 }
 
@@ -28,7 +27,7 @@ CreationCoupon($nombre);
 <button type="submit" name="formCoupon" class="btn btn-secondary" >Create Coupon</button>
 </form>
 
-  
+
     <?php $mysqli = new mysqli('localhost','root','','projet_web') or die(mysqli_error($mysqli));
  $result = $mysqli->query("SELECT * FROM coupon") or die($mysqli->error);
  //pre_r($result);
@@ -37,19 +36,18 @@ CreationCoupon($nombre);
      <table class="table">
          <thead>
              <tr>
-                 
-                 <th>Les coupons disponibles</th>               
+
+                 <th>Les coupons disponibles</th>
              </tr>
-        </thead> 
+        </thead>
         <?php
         while ($row = $result->fetch_assoc()): ?>
         <tr>
             <td> <?php echo $row['code']; ?></td>
             </tr>
             <?php endwhile; ?>
-     </table>  
-  
-   
+     </table>
+
+
 </body>
 </html>
-

@@ -1,7 +1,7 @@
 body ,html{
     margin: 0px;
     padding: 0px;
-    background: url(backk.jpg);
+    background: url(img1.jpg);
     background-size: 100%;
     background-repeat: no-repeat;
     position:relative;
@@ -17,75 +17,75 @@ body ,html{
     float: left;
   }
 
-  .menu ul li { 
+  .menu ul li {
     padding-right: 42px;
-     
-    
-    }
-   
 
-    
+
+    }
+
+
+
     .menu a {
         font-size: 14px,solid;
         text-decoration: none;
-        color:white ;
+        color:black ;
         display: block;
         padding: 20px;
-        box-shadow : 10px 10px 5px white;
-        font-family:'Courgette', cursive; 
+        box-shadow : 10px 10px 5px black;
+        font-family:'Courgette', cursive;
         padding: 10px 10px 10px 10px;
         text-align: left;
         border-radius: 25px;
         margin-left: 20px;
         margin-top: 20px;
-    
+
     }
-     
- 
+
+
     .corps a{
         text-decoration:none ;
-        color: white;
+        color: black;
         float: left;
         text-align: center;
         margin: 20px;
 
     }
     .corps .vis a{
-        font-family:'Courgette', cursive; 
-        color: white ;
+        font-family:'Courgette', cursive;
+        color: black ;
         width: 284px;
         padding: 100px 100px 200px 100px;
         border: 1px blue;
-      
-        box-shadow: 10px 10px 5px white;
+
+        box-shadow: 10px 10px 5px black;
         border-radius: 20px;
     }
     .corps .avis a{
-        color: white;
-        font-family:'Courgette', cursive; 
+        color: black;
+        font-family:'Courgette', cursive;
         width: 284px;
         padding: 100px 100px 200px 100px;
         border: 1px  ;
-       
-        box-shadow: 10px 10px 5px white;
+
+        box-shadow: 10px 10px 5px black;
         border-radius: 25px;
     }
     .corps .offres a{
-        font-family:'Courgette', cursive; 
+        font-family:'Courgette', cursive;
         width: 284px;
         padding: 100px 100px 200px 100px;
         border: 1px blue;
-        color: white;
-        box-shadow: 10px 10px 5px white;
+        color: black;
+        box-shadow: 10px 10px 5px black;
         border-radius: 25px;
     }
     .corps .loge a{
-        font-family:'Courgette', cursive; 
+        font-family:'Courgette', cursive;
         width: 283px;
         padding: 100px 100px 200px 100px;
         border: 1px blue;
-        color: white;
-        box-shadow: 10px 10px 5px white;
+        color: black;
+        box-shadow: 10px 10px 5px black;
         border-radius: 25px;
     }
     .corps{

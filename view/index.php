@@ -4,44 +4,29 @@ include "./includes/header.php";
 
 ?>
   <!---Slides------->
-    <div id="slides" class="carousel slide" data-ride="carousel">
-      <ul class="carousel-indicators">
-        <li data-target="#slides" data-slide-to="0" class="active"></li>
-        <li data-target="#slides" data-slide-to="1"></li>
-        <li data-target="#slides" data-slide-to="2"></li>
-      </ul>
-      <div class="carousel-inner active">
-        <div class="carousel-item">
-          <img src="">
-          <div class="carousel-caption">
-            <h1 class="display-3">Vous voulez en savoir plus sur nous ?</h1>
-            <button type="button" class="btn btn-primary btn-md"> F.A.Q </button>
-          </div>
-        </div>
-        <div class="carousel-item">
-          <img src="">
-          <div class="carousel-caption">
-            <h1 class="display-3">Vous voulez vistez un appartement ?</h1>
-            <button type="button" class="btn btn-primary btn-md"> Inscrivez vous </button>
-          </div>
-        </div>
-        <div class="carousel-item">
-          <img src="">
-          <div class="carousel-caption">
-            <h1 class="display-3">Vous voulez participer a un Evenement ?</h1>
-            <button type="button" class="btn btn-primary btn-md"> Inscrivez vous </button>
-          </div>
-        </div>
-      </div>
+  <div id="slides" class="carousel slide" data-ride="carousel">
+<ul class="carousel-indicators">
+  <li data-target="#slides" data-slide-to="0" class="active"></li>
+</ul>
+<div class="carousel-inner">
+  <div class="carousel-item active">
+    <img src="../assets/img/img1.jpg">
+    <div class="carousel-caption">
+      <h1 class="display-2">Sky City !</h1>
+      <h3>Welcome To SkyCity !</h3>
+      <a type="button" class="btn btn-primary btn-lg" href="./Logement.php">Voir Nos Logements</a>
+      <a type="button" class="btn btn-secondary btn-lg" href="./events.php">Voir nos evenements</a>
     </div>
-
+  </div>
+</div>
+</div>
   <!---Welcome section--->
   <div class="container-fluid padding">
 
     <div class="row welcome text-center">
       <hr class="my-4">
       <div class="col-12">
-        <h1>Star City </h1>
+        <h1>Sky City </h1>
       </div>
       <div class="col-12">
         <p class="lead">Vivons dans un environnement sain !</p>
@@ -50,24 +35,24 @@ include "./includes/header.php";
   </div>
   <hr class="my-4">
   <!---Section--->
-  <div class="container-fluid padding">
+  <div class="container-fluid padding section">
     <div class="row text-center padding">
       <div class="col-xs-12 col-sm-6 col-md-4">
-        <div class="Fonctionalite">
+        <div class="Fonctionalite1">
         <i class="fas fa-wrench"></i>
         <h3>Entretient Rapide !</h3>
         <p>Nous garantissons un entretient rapide et efficaces sur vos Appartement !</p>
       </div>
       </div>
       <div class="col-xs-12 col-sm-6 col-md-4">
-        <div class="Fonctionalite">
+        <div class="Fonctionalite2">
         <i class="fas fa-tree"></i>
         <h3>Sensibilite Ecologique !</h3>
         <p>Nous organisons hebdomadairement des evenement de sensibilisation sur l'ecologie</p>
       </div>
       </div>
       <div class="col-sm-2 col-md-4">
-        <div class="Fonctionalite">
+        <div class="Fonctionalite3">
         <i class="fas fa-calendar-alt"></i>
         <h3> Administration disponible 24/7 !</h3>
         <p>Avec notre equipe d'administration disponible 24/7 nous garantissons la securite de vos informations sur notre site</p>
