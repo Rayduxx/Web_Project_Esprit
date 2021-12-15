@@ -25,10 +25,7 @@ CreationCoupon($nombre);
 <body>
 
 
-    <form method="post">
-        <input type="number" id="nombre" name="nombre" value="1">
-        <button type="submit" name="formCoupon" >create Coupon</button>
-    </form>
+  
     <?php $mysqli = new mysqli('localhost','root','','projet_web') or die(mysqli_error($mysqli));
  $result = $mysqli->query("SELECT * FROM coupon") or die($mysqli->error);
  //pre_r($result);
@@ -48,7 +45,11 @@ CreationCoupon($nombre);
             </tr>
             <?php endwhile; ?>
      </table>  
+     <form method="post">
+
+        <button type="submit" name="formCoupon" class="btn btn-secondary" >Create Coupon</button>
+    </form>
+   
 </body>
 </html>
-
 
