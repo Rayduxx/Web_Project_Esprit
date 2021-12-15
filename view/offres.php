@@ -31,7 +31,6 @@ function NombreOffre($i){
               <th scope="col">Prix Initiale</th>
               <th scope="col">Prix Finale</th>
               <th scope="col">Temps Expiraton</th>
-              <th scope="col"></th>
             </tr>
           </thead>
           <tbody>
