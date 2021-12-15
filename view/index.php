@@ -55,22 +55,22 @@ include "./includes/header.php";
       <div class="col-xs-12 col-sm-6 col-md-4">
         <div class="Fonctionalite">
         <i class="fas fa-wrench"></i>
-        <h3>Fonctionalite 1 !</h3>
-        <p>Lorem ipsum</p>
+        <h3>Entretient Rapide !</h3>
+        <p>Nous garantissons un entretient rapide et efficaces sur vos Appartement !</p>
       </div>
       </div>
       <div class="col-xs-12 col-sm-6 col-md-4">
         <div class="Fonctionalite">
         <i class="fas fa-tree"></i>
-        <h3>Fonctionalite 2 !</h3>
-        <p>Lorem ipsum</p>
+        <h3>Sensibilite Ecologique !</h3>
+        <p>Nous organisons hebdomadairement des evenement de sensibilisation sur l'ecologie</p>
       </div>
       </div>
       <div class="col-sm-2 col-md-4">
         <div class="Fonctionalite">
         <i class="fas fa-calendar-alt"></i>
-        <h3>Fonctionalite 3 !</h3>
-        <p>Lorem ipsum</p>
+        <h3> Administration disponible 24/7 !</h3>
+        <p>Avec notre equipe d'administration disponible 24/7 nous garantissons la securite de vos informations sur notre site</p>
       </div>
       </div>
     </div>

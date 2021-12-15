@@ -125,5 +125,5 @@ if(isset($_POST['debloquage'])){
       </table>
     </div>
   </div>
-<div><br/><br/><br/>
+</div><br/><br/><br/>
 <?php include "./includes/footer.php"; ?>

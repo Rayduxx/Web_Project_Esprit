@@ -24,7 +24,7 @@ if($userexist == 1) {
     <header class="sticky-top">
       <nav class="navbar navbar-expand-md nav nav-tabs navbar-light">
         <div class="container-fluid navbar-inner">
-          <a class="navbar-brand" href="./index.php"><img src="#"></a>
+          <a class="navbar-brand" href="./index.php"><img src="../assets/img/logo.png" width="50" height="50"></a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
   					     <span class="navbar-toggler-icon"></span>
   			   </button>

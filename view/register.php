@@ -15,7 +15,7 @@ if(isset($_POST['forminscription'])) {
 	$password2 = sha1($_POST['password2']);
 	if(!empty($_POST['email']) AND !empty($_POST['email2']) AND !empty($_POST['nom']) AND !empty($_POST['prenom']) AND !empty($_POST['password']) AND !empty($_POST['password2'])) {
 		$namelength = strlen($prenom);
-    	$nomlength = strlen($nom);
+    $nomlength = strlen($nom);
 		if( $namelength <= 255 && $nomlength <= 255) {
 			if($email == $email2) {
 				if(filter_var($email, FILTER_VALIDATE_EMAIL)) {
@@ -63,7 +63,7 @@ if(isset($_POST['forminscription'])) {
 						echo '<div class="col-md-12 container"><div class="alert alert-danger" role="alert"> Une erreur est survenu lors de votre inscription :' .$erreur.'</div></div>';
 					}?>
 					<?php if(isset($success)) {
-						echo '<div class="col-md-12 container"><div class="alert alert-success" role="alert">' .$success.'<a href="/login"> Connectez vous</a></div></div>';
+						echo '<div class="col-md-12 container"><div class="alert alert-success" role="alert">' .$success.'<a href="./login.php"> Connectez vous</a></div></div>';
 					}?>
 						<div class="col-md-6 container">
 							<input type="text" id="nom" class="form-control rounded" name="nom" placeholder="Nom" required /><br/><br/>

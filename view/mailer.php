@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Subscription Form | Sky City</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="./mailer.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
 </head>
 <body>
@@ -24,7 +24,7 @@
       <p>Subscribe to our site and get the latest updates straight to your inbox.</p>
     </div>
     <form action="index.php" method="POST">
-    <?php 
+    <?php
     $userEmail = ""; //first we leave email field blank
     if(isset($_POST['subscribe'])){ //if subscribe btn clicked
       $userEmail = $_POST['email']; //getting user entered email
