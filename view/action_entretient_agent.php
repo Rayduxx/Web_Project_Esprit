@@ -45,7 +45,7 @@ if(isset($_POST['formAction'])){
 <div class="col-md-6 container">
   <form method="post">
     <input type="text" id="prix" class="form-control rounded" name="prix"  value="<?php echo $Mission['prix']; ?>" placeholder="Prix en tnd" required/><br/><br/>
-    <input type="datetime-local" id="date" class="form-control rounded" name="date"  value="<?php echo date('Y-m-d\TH:i:s', strtotime($Mission['TimeDateEntretient'])); ?>" required/><br/><br/>
+    <input type="datetime-local" id="date" class="form-control rounded" name="date"  value="<?php if($Mission['TimeDateEntretient'] != NULL){echo date('Y-m-d\TH:i:s', strtotime($Mission['TimeDateEntretient']));} else{echo date('Y-m-d\TH:i:s', time());} ?>" required/><br/><br/>
     <button type="submit" class="btn btn-success" name="formAction">Validez Modification </button>
   </form>
 </div>

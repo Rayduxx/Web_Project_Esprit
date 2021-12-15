@@ -16,14 +16,21 @@ function NombreLogementUser($i){
 }
 function NombreInterventionAgent($i){
   $bdd = new PDO('mysql:host=localhost;dbname=projet_web;charset=utf8', 'root', '');
-  $query = $bdd->prepare("SELECT * FROM entretient WHERE idAgentEntretient = ? AND status = 1");
+  $query = $bdd->prepare("SELECT * FROM entretient WHERE idAgentEntretient = ? AND status = 2");
+  $query->execute(array($i));
+  $result = $query->rowCount();
+  return $result;
+}
+function NombreInterventionGestion($i){
+  $bdd = new PDO('mysql:host=localhost;dbname=projet_web;charset=utf8', 'root', '');
+  $query = $bdd->prepare("SELECT * FROM entretient WHERE idAgentEntretient = ?");
   $query->execute(array($i));
   $result = $query->rowCount();
   return $result;
 }
 function NombreInterventionEnCoursAgent($i){
   $bdd = new PDO('mysql:host=localhost;dbname=projet_web;charset=utf8', 'root', '');
-  $query = $bdd->prepare("SELECT * FROM entretient WHERE idAgentEntretient = ? AND status = 0");
+  $query = $bdd->prepare("SELECT * FROM entretient WHERE idAgentEntretient = ? AND status = 1");
   $query->execute(array($i));
   $result = $query->rowCount();
   return $result;
@@ -35,4 +42,13 @@ function NombreInterventionLogement($i){
   $result = $query->rowCount();
   return $result;
 }
+
+function NombreInterventionNull(){
+  $bdd = new PDO('mysql:host=localhost;dbname=projet_web;charset=utf8', 'root', '');
+  $query = $bdd->prepare("SELECT * FROM entretient WHERE status = 0");
+  $query->execute();
+  $result = $query->rowCount();
+  return $result;
+}
+
 ?>
