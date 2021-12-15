@@ -33,13 +33,15 @@ if($_GET['success'] == 1) { ?>
 <?php } else {
   $selectParticipation = $bdd->prepare("SELECT * FROM participants WHERE userId = ? ORDER BY id");
   $selectParticipation->execute(array($userinfo['id']));
-  while($A = $selectParticipation->fetch()){
-  $selectionEvent = $bdd->prepare("SELECT * FROM event WHERE id = ?");
-  $selectionEvent->execute(array($A['eventId']));
-  $event = $selectionEvent->fetch();
-  if($event['isComplete'] == 0){
+
    ?>
   <tbody>
+  <?php  while($A = $selectParticipation->fetch()){
+    $selectionEvent = $bdd->prepare("SELECT * FROM event WHERE id = ?");
+    $selectionEvent->execute(array($A['eventId']));
+    $event = $selectionEvent->fetch();
+    $date_now = strtotime($event['datetime']) - time();
+    if($date_now > 0){ ?>
     <tr>
       <td><?php echo date('d/m/Y H:i:s', strtotime($event['datetime'])); ?></td>
       <td><?php echo $event['name']; ?></td>
@@ -48,8 +50,9 @@ if($_GET['success'] == 1) { ?>
       <td><a class="btn btn-warning" type="button" href="./evenement.php?idEvent=<?php echo $A['eventId']; ?>">En savoir plus</a></td>
     </tr>
   </tbody>
+<?php }}?>
   </table>
-<?php }}} ?>
+<?php } ?>
 </table>
 </div>
 <br/><br/><br/>

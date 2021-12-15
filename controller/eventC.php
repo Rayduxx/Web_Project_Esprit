@@ -1,9 +1,15 @@
 <?php
 function NombreEventsActif (){
   $bdd = new PDO('mysql:host=localhost;dbname=projet_web;charset=utf8', 'root', '');
-  $query = $bdd->prepare("SELECT * FROM event WHERE isComplete = 0");
+  $query = $bdd->prepare("SELECT * FROM event");
   $query->execute();
-  $result = $query->rowCount();
+  $result = 0;
+  while($A = $query->fetch()){
+    $calculTime = strtotime($A['datetime']) - time();
+    if($calculTime > 0){
+      $result = $result + 1;
+    }
+  }
   return $result;
 }
 
@@ -15,24 +21,13 @@ function NombreEventsUser($u)
   $result = $query->rowCount();
   return $result;
 }
-function NombreEvents (){
+
+function NombreParticipantsEvent($E){
   $bdd = new PDO('mysql:host=localhost;dbname=projet_web;charset=utf8', 'root', '');
-  $query = $bdd->prepare("SELECT * FROM event");
-  $query->execute();
+  $query = $bdd->prepare("SELECT * FROM participants WHERE eventId = ?");
+  $query->execute(array($E));
   $result = $query->rowCount();
   return $result;
-}
-
-function nombrePlaceVide($id){
-  $bdd = new PDO('mysql:host=localhost;dbname=projet_web;charset=utf8', 'root', '');
-  $query = $bdd->prepare("SELECT * FROM event WHERE id = ?");
-  $query->execute(array($id));
-  $evenement = $query->fetch();
-  $selectionP = $bdd->prepare("SELECT FROM participants WHERE eventId = ?");
-  $selectionP->execute(array($id));
-  $comptage = $selectionP->rowCount();
-  $res = $evenement['maxParticipant'] - $comptage;
-  return $res;
 }
 
  ?>
