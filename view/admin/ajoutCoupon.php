@@ -1,4 +1,4 @@
-<?php
+ <?php
 include_once "../../controller/couponC.php";
 if(isset($_POST['formCoupon'])){
 $nombre = htmlspecialchars($_POST['nombre']);
@@ -23,7 +23,10 @@ CreationCoupon($nombre);
     <title>generer coupon</title>
 </head>
 <body>
-
+<form method="post">
+<input type="number" id="nombre" name="nombre" class="btn btn-secondary" value="1">
+<button type="submit" name="formCoupon" class="btn btn-secondary" >Create Coupon</button>
+</form>
 
   
     <?php $mysqli = new mysqli('localhost','root','','projet_web') or die(mysqli_error($mysqli));
@@ -45,10 +48,7 @@ CreationCoupon($nombre);
             </tr>
             <?php endwhile; ?>
      </table>  
-     <form method="post">
-
-        <button type="submit" name="formCoupon" class="btn btn-secondary" >Create Coupon</button>
-    </form>
+  
    
 </body>
 </html>
