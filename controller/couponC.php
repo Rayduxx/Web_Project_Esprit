@@ -7,7 +7,7 @@
             $selectID = $bdd->query("SELECT id FROM users ORDER BY rand() LIMIT 1");
             $selectID->execute();
             $A = $selectID->fetch();
-            $insertnewcoupon = $bdd->prepare("INSERT INTO coupon(code, etat, userid) VALUES(?, ?, ?)");
+            $insertnewcoupon = $bdd->prepare("INSERT INTO coupon(code, etat, iduser) VALUES(?, ?, ?)");
             $insertnewcoupon->execute(array($code,0,$A['id']));
             $j++;
         }
