@@ -254,9 +254,6 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `nom`, `prenom`, `photo`, `email`, `password`, `isAdmin`, `typeCompte`, `datecreation`) VALUES
-(1, 'Bitri', 'Othman', '', 'othman.bitri@gmail.com', '0209cd4b0daf7404c29f46532c79e3611a57937b', 1, 0, '2021-11-17 18:27:31'),
-(4, 'Zrig', 'Mouhamed', '', 'mohamedamine.chtioui@esprit.tn', '251f18d4e6b31f7e8ee5bbc62db713101e85a8c9', 0, 0, '2021-11-24 10:18:08');
 
 --
 -- Indexes for dumped tables
